@@ -1,0 +1,57 @@
+<div class="row">
+  <h1 class="bg-grey tc h1">Mileage Records</h1>
+</div>
+<div class="row">
+  <div class="small-12 columns">
+    <%= link_to 'New Mileage record', new_mileage_record_path, :class => "button-blue w-full" %>
+  </div>
+</div>
+
+<% @mileage_records.each do |mileage_record| %>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="mileage-record">
+        <div class="attribute-group">
+          <div class="attribute-label il">Date</div>
+          <div data-title="Date"><%= mileage_record.record_date.strftime("%m/%d/%Y") %></div>
+        </div>
+        <div class="attribute-group">
+          <div class="attribute-label il">Route</div>
+          <div data-title="Route"><%= mileage_record.route_description %></div>
+        </div>
+        <div class="attribute-group">
+          <div class="attribute-label il">Start Mileage</div>
+          <div data-title="Start Mileage"><%= mileage_record.start_mileage %></div>
+        </div>
+        <div class="attribute-group">
+          <div class="attribute-label il">End Mileage</div>
+          <div data-title="End Mileage"><%= mileage_record.end_mileage %></div>
+        </div>
+        <div class="attribute-group">
+          <div class="attribute-label il">Notes</div>
+          <div data-title="Notes"><%= mileage_record.notes %></div>
+        </div>
+        <div class="attribute-group">
+          <ul class="button-group even-2">
+            <li class=""><%= link_to 'Edit', edit_mileage_record_path(mileage_record), :class => "edit-button" %></li>
+            <li class=""><%= link_to 'Delete', mileage_record, method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete-button" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<br>
+
+<div class="row">
+  <div class="small-12 columns">
+    <%= link_to 'New Mileage record', new_mileage_record_path %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <%= link_to 'Log Out', destroy_user_session_path, :method => :delete, :class => "button-red w-full m-20", :placeholder => "button-red" %>
+  </div>
+</div>

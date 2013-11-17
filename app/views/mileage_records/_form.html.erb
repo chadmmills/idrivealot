@@ -1,0 +1,56 @@
+<%= form_for(@mileage_record) do |f| %>
+  <div class="row">
+    <div class="small-12 columns">
+      <% if @mileage_record.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@mileage_record.errors.count, "Error") %> Were Found:</h2>
+
+          <ul>
+          <% @mileage_record.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <%= f.label :record_date, "Date" %><br>
+      <%= f.date_select :record_date %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= f.label :route_description, "Route" %><br>
+      <% if @mileage_record.route_description.nil? %>
+        <% f.select :route_description, MileageRecord.select("route_description").group("route_description").collect { |r| [ r.route_description ] }, :include_blank => true#  %>
+      <% end %>
+      <%= f.text_field :route_description, :placeholder => "Enter Route Description Here..." %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= f.label :start_mileage, "Start Mileage" %><br>
+      <%= f.number_field :start_mileage %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= f.label :end_mileage, "End Mileage" %><br>
+      <%= f.number_field :end_mileage, :placeholder => "i.e. 34,269" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= f.label :notes %><br>
+      <%= f.text_area :notes %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= f.submit "Create Mileage Record", :class => "button-blue w-full" %>
+    </div>
+  </div>
+<% end %>

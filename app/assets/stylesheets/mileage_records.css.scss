@@ -1,0 +1,85 @@
+// Place all the styles related to the mileage_records controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'foundation';
+
+$green: #1EBBA6;
+$blue: #05B2D2;
+$darkgrey: #2D373F;
+$lightgrey: #F8F9FB;
+$orange: #EE7836;
+$red: #cc0000;
+
+.bg-grey {background-color: $darkgrey; color: white}
+
+.button {box-shadow: none; font-weight: 200}
+
+.button-blue {
+	@extend .button;
+	background-color: $blue;
+	border-color: $blue;
+	margin: 0px;
+}
+.button-red {
+	@extend .button;
+	background-color: $red;
+	border-color: $red;
+	margin: 0px;
+	&:hover {background-color: darken($red, 5%)}
+}
+
+.edit-button {
+	@extend .button;
+	background-color: $green;
+	border-color: $green;
+	margin: 0px;
+	height: 76px;
+	line-height: 50px;
+	&:hover {
+		background-color: darken($green, 5%);
+	}
+}
+
+.delete-button {
+	@extend .button;
+	background-color: $orange;
+	border-color: $orange;
+	margin: 0px;
+	height: 76px;
+	line-height: 50px;
+	&:hover {background-color: darken($orange, 5%)}
+}
+
+.h1 {padding: 10px}
+
+.il {display: inline}
+
+input[type=checkbox] {margin-right: 5px}
+
+li {list-style: none}
+
+.ma {margin-left: auto;margin-right: auto;}
+
+.m-20 {margin: 20px 0px 20px 0px}
+
+.tc {text-align: center}
+
+.w-50p {width: 50%}
+
+.w-200 {width: 200px;}
+
+.w-full {width: 100%}
+
+h1, h2, h3, h4, h5, h6 {font-weight: 200}
+
+body {font-weight: 300}
+
+.mileage-record {background-color: $lightgrey; margin: 10px 0px 0px 0px; font-size: .9em;color: $darkgrey}
+
+.attribute-group > div {display: inline-block; margin: 2px 0px 2px 0px;padding: 5px}
+
+.attribute-label {
+	width: 33%;
+	// background-color: grey
+}
