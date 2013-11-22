@@ -11,6 +11,12 @@ FactoryGirl.define do
 
     factory :invalid_mileage_record do
     	record_date nil
+        end_mileage nil
+        route_description nil
+    end
+
+    factory :nil_end_mileage do
+        end_mileage nil
     end
   end
 end

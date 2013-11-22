@@ -42,8 +42,10 @@ class MileageRecord < ActiveRecord::Base
     end
 
     def start_less_than_end_mileage
-      if self.end_mileage < self.start_mileage
-        errors[:base] << "End Mileage must be greater than Start Mileage"
+      unless self.end_mileage.nil?
+        if self.end_mileage < self.start_mileage ||= 0
+          errors[:base] << "End Mileage must be greater than Start Mileage"
+        end
       end
     end
 end

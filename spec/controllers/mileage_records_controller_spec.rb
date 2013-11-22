@@ -53,6 +53,9 @@ describe MileageRecordsController do
       it "does not save the new record in the database" do
         expect{post :create, mileage_record: attributes_for(:invalid_mileage_record)}.to_not change(MileageRecord, :count)
       end
+      it "does not save the new record with nil end mileage" do
+        expect{post :create, mileage_record: attributes_for(:nil_end_mileage)}.to_not change(MileageRecord, :count)
+      end
       it "re-renders the new template" do
         post :create, mileage_record: attributes_for(:invalid_mileage_record)
         expect(response).to render_template :new
