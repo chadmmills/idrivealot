@@ -23,11 +23,19 @@
   </div>
   <div class="row">
     <div class="small-12 columns">
-      <%= f.label :route_description, "Route" %><br>
-      <% if @mileage_record.route_description.nil? %>
-        <% f.select :route_description, MileageRecord.select("route_description").group("route_description").collect { |r| [ r.route_description ] }, :include_blank => true#  %>
-      <% end %>
-      <%= f.text_field :route_description, :placeholder => "Enter Route Description Here..." %>
+      <%= label_tag :new_route_description, "Enter New Route" %><br />
+      <%= text_field_tag :new_route_description %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns tc">
+      -- OR --
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= f.label :route_description, "Select Route" %><br>
+      <%= select("mileage_record", "route_description", @routes, :include_blank => true )  %>
     </div>
   </div>
   <div class="row">

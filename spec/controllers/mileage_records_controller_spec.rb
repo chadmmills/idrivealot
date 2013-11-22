@@ -26,6 +26,11 @@ describe MileageRecordsController do
       get :new
       expect(assigns(:mileage_record)).to be_a_new(MileageRecord)
     end
+    # it "should only show selects for current_user" do
+    #   create(:mileage_record, route_description: "Do not include this text")
+    #   get :new
+    #   expect(find_field('mileage_record[route_description]')).to_not have_content "Do not include this text"
+    # end
   end
 
   describe "GET edit" do

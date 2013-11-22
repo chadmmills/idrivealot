@@ -4,7 +4,7 @@ class MileageRecordsController < ApplicationController
 
   # GET /mileage_records
   def index
-    @mileage_records = current_user.mileage_records.order("record_date DESC")
+    @mileage_records = current_user.mileage_records.order("record_date DESC, end_mileage DESC")
     respond_to do |f|
       f.html
       f.csv { send_data @mileage_records.to_csv(current_user), type: 'text/csv; charset=utf-8; header=present' }
@@ -19,7 +19,7 @@ class MileageRecordsController < ApplicationController
   def new
     @mileage_record = current_user.mileage_records.new
     @mileage_record.start_mileage = MileageRecord.last_end_mileage_for(current_user)
-    @routes = MileageRecord.select("route_description").group("route_description").map { |r| [r.route_description] }
+    @routes = MileageRecord.select("route_description").where(user_id: current_user).group("route_description").map { |r| [r.route_description] }
   end
 
   # GET /mileage_records/1/edit
@@ -29,6 +29,7 @@ class MileageRecordsController < ApplicationController
   # POST /mileage_records
   def create
     @mileage_record = current_user.mileage_records.new(mileage_record_params)
+    @mileage_record.route_description = params[:new_route_description] unless params[:new_route_description].nil?
       if @mileage_record.save
         redirect_to mileage_records_url, notice: 'Mileage record was successfully created.'
       else
@@ -68,6 +69,6 @@ class MileageRecordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mileage_record_params
-      params.require(:mileage_record).permit(:record_date, :start_mileage, :end_mileage, :route_description, :distance, :notes, :user_id)
+      params.require(:mileage_record).permit(:record_date, :start_mileage, :end_mileage, :route_description, :notes, :new_route_description)
     end
 end
