@@ -1,6 +1,7 @@
 class MileageRecordsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_mileage_record, only: [:show, :edit, :update, :destroy]
+  before_action :set_routes_select_data, only: [:create, :new, :edit]
 
   # GET /mileage_records
   def index
@@ -19,7 +20,6 @@ class MileageRecordsController < ApplicationController
   def new
     @mileage_record = current_user.mileage_records.new
     @mileage_record.start_mileage = MileageRecord.last_end_mileage_for(current_user)
-    @routes = MileageRecord.select("route_description").where(user_id: current_user).group("route_description").map { |r| [r.route_description] }
   end
 
   # GET /mileage_records/1/edit
@@ -65,6 +65,10 @@ class MileageRecordsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_mileage_record
       @mileage_record = current_user.mileage_records.find(params[:id])
+    end
+
+    def set_routes_select_data
+      @routes = MileageRecord.select("route_description").where(user_id: current_user).group("route_description").map { |r| [r.route_description] }
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
