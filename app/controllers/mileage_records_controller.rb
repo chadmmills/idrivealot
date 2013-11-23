@@ -29,7 +29,7 @@ class MileageRecordsController < ApplicationController
   # POST /mileage_records
   def create
     @mileage_record = current_user.mileage_records.new(mileage_record_params)
-    @mileage_record.route_description = params[:new_route_description] unless params[:new_route_description].nil?
+    @mileage_record.route_description = params[:new_route_description] unless params[:new_route_description].blank?
       if @mileage_record.save
         redirect_to mileage_records_url, notice: 'Mileage record was successfully created.'
       else

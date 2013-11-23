@@ -77,7 +77,7 @@ h1, h2, h3, h4, h5, h6 {font-weight: 200}
 
 body {font-weight: 300}
 
-.mileage-record {background-color: $lightgrey; margin: 10px 0px 0px 0px; font-size: .9em;color: $darkgrey}
+.mileage-record {background-color: $lightgrey; margin: 10px auto; font-size: .9em;color: $darkgrey; max-width: 400px}
 
 .attribute-group > div {display: inline-block; margin: 2px 0px 2px 0px;padding: 5px}
 
