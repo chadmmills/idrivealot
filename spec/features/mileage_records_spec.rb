@@ -13,5 +13,14 @@ feature "New Mileage Record" do
 		#save_and_open_page
 		expect(page.source).to_not have_text "Hello there"
 		expect(page.source).to have_text "This should show up"
+		fill_in "new_route_description", with: "Trip to Honda"
+		click_button 'Create Mileage Record'
+		expect(page).to have_content "Trip to Honda"
 	end	
+end
+
+feature "Edit Mileage Record" do
+	scenario "edit field for route description" do
+
+	end
 end

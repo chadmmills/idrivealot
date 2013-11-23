@@ -28,8 +28,7 @@ class MileageRecordsController < ApplicationController
 
   # POST /mileage_records
   def create
-    @mileage_record = current_user.mileage_records.new(mileage_record_params)
-    @mileage_record.route_description = params[:new_route_description] unless params[:new_route_description].blank?
+    @mileage_record = current_user.mileage_records.new(updated_mileage_record_params)
       if @mileage_record.save
         redirect_to mileage_records_url, notice: 'Mileage record was successfully created.'
       else
@@ -40,15 +39,11 @@ class MileageRecordsController < ApplicationController
   # PATCH/PUT /mileage_records/1
   # PATCH/PUT /mileage_records/1.json
   def update
-    respond_to do |format|
-      if @mileage_record.update(mileage_record_params)
-        format.html { redirect_to @mileage_record, notice: 'Mileage record was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @mileage_record.errors, status: :unprocessable_entity }
-      end
-    end
+    if @mileage_record.update(updated_mileage_record_params)
+      redirect_to mileage_records_url, notice: 'Mileage record was successfully updated.'
+    else
+    render action: 'edit'
+  end
   end
 
   # DELETE /mileage_records/1
@@ -74,5 +69,11 @@ class MileageRecordsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def mileage_record_params
       params.require(:mileage_record).permit(:record_date, :start_mileage, :end_mileage, :route_description, :notes, :new_route_description)
+    end
+
+    def updated_mileage_record_params
+      new_params = mileage_record_params
+      new_params[:route_description] = params[:new_route_description] unless params[:new_route_description].blank?
+      return new_params
     end
 end
