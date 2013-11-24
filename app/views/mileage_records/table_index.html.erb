@@ -1,0 +1,58 @@
+<nav class="top-bar">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="#">MILEAGE TRACKER</a></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+  </ul>
+
+    <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="hide-for-small"><a href="#">NEW RECORD</a></li>
+      <li class="has-dropdown">
+        <a href="#">OPTIONS</a>
+        <ul class="dropdown">
+          <li><a href="#">First link in dropdown</a></li>
+        </ul>
+      </li>
+    </ul>
+</nav>
+
+<div class="row show-for-small">
+  <div class="small-12 columns m-20">
+    <%= link_to 'New Mileage Record', new_mileage_record_path, :class => "button-blue text-center" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <table class="records-table">
+      <thead class="hide-for-small">
+        <tr>
+        	<th>DATE</th>
+        	<th>ROUTE</th>
+        	<th>DISTANCE</th>
+        	<th>END MILEAGE</th>
+        	<th>NOTES</th>
+        	<th>ACTIONS</th>
+        </tr>
+       </thead>
+       <tbody>
+       	<% @mileage_records.each do |mr| %>
+       		<tr class="tr-row">
+       			<td><%= mr.record_date.strftime("%a - %m/%d") %> </td>
+            <td><%= mr.route_description %></td>
+            <td><%= mr.distance %></td>
+            <td><%= mr.end_mileage %></td>
+            <td class="hide-for-small"><%= mr.notes %></td>
+            <td class="actions">
+              <%= link_to 'Edit', edit_mileage_record_path(mr), :class => "edit-button" %>
+              <%= link_to 'Delete', mr, method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete-button" %>
+            </td>
+       		</tr>
+       	<% end %>
+       </tbody>
+    </table>
+  </div>
+</div>

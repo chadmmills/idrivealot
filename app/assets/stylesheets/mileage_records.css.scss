@@ -3,6 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import 'foundation';
+@import 'foundation_and_overrides';
+
+
+
+
+// $small-screen: 768px;
+// $small: "only screen and (min-width: #{$small-screen})";
 
 $green: #1EBBA6;
 $blue: #05B2D2;
@@ -10,78 +17,49 @@ $darkgrey: #2D373F;
 $lightgrey: #F8F9FB;
 $orange: #EE7836;
 $red: #cc0000;
+$purple: #663399;
+
+.records-table {width:100%;font-size:.8em;border: none;color: $darkgrey;margin-top: 20px;}
+
+.tr-row td {
+	display: block;
+	padding-left: 0px;
+	padding-right: 0px;
+	@media #{$small} {display:table-cell;padding-top:.01em; padding-bottom: .01em}
+}
+
+.tr-row td:before {padding-right: 10px;}
+
+.tr-row td:nth-child(1):before { content: "Date:"}
+.tr-row td:nth-child(2):before { content: "Route:"}
+.tr-row td:nth-child(3):before { content: "Distance:"}
+.tr-row td:nth-child(4):before { content: "End Mileage:"}
+
+@media #{$small} {
+	.tr-row td:nth-child(1):before { content: ""}
+	.tr-row td:nth-child(2):before { content: ""}
+	.tr-row td:nth-child(3):before { content: ""}
+	.tr-row td:nth-child(4):before { content: ""}
+}
+
+td.actions a {
+	float: left;
+	width: 50%;
+	text-align: center;
+	padding: 10px 0px 10px 0px;
+	color: white;
+}
+
+td.actions a:nth-child(1) {background-color: $green;@media #{$small} { &:hover {background-color:darken($green,5%)}}}
+td.actions a:nth-child(2) {background-color: $purple;@media #{$small} { &:hover {background-color:darken($purple,5%)}}}
+
+.top-bar .name h1 a {font-weight: 200;width:75%;white-space: nowrap;}
+
+.top-bar-section ul li > a {font-weight:200; background: $darkgrey}
 
 .bg-grey {background-color: $darkgrey; color: white}
 
-.button {box-shadow: none; font-weight: 200}
+.button-blue {width:100%;background-color: $blue; font-weight: 200; display:block;margin:20px 0px; padding:1em;color:white}
+.button-blue:hover {color:white;}
+.mileage-record { @media #{$small} {font-size: .9em }}
 
-.button-blue {
-	@extend .button;
-	background-color: $blue;
-	border-color: $blue;
-	margin: 0px;
-}
-.button-red {
-	@extend .button;
-	background-color: $red;
-	border-color: $red;
-	margin: 0px;
-	&:hover {background-color: darken($red, 5%)}
-}
-
-.edit-button {
-	@extend .button;
-	background-color: $green;
-	border-color: $green;
-	margin: 0px;
-	height: 76px;
-	line-height: 50px;
-	&:hover {
-		background-color: darken($green, 5%);
-	}
-}
-
-.delete-button {
-	@extend .button;
-	background-color: $orange;
-	border-color: $orange;
-	margin: 0px;
-	height: 76px;
-	line-height: 50px;
-	&:hover {background-color: darken($orange, 5%)}
-}
-
-.h1 {padding: 10px}
-
-.il {display: inline}
-
-input[type=checkbox] {margin-right: 5px}
-
-li {list-style: none}
-
-.links > a {display:block; margin: 5px 0px 0px 0px}
-
-.ma {margin-left: auto;margin-right: auto;}
-
-.m-20 {margin: 20px 0px 20px 0px}
-
-.tc {text-align: center}
-
-.w-50p {width: 50%}
-
-.w-200 {width: 200px;}
-
-.w-full {width: 100%}
-
-h1, h2, h3, h4, h5, h6 {font-weight: 200}
-
-body {font-weight: 300}
-
-.mileage-record {background-color: $lightgrey; margin: 10px auto; font-size: .9em;color: $darkgrey; max-width: 400px}
-
-.attribute-group > div {display: inline-block; margin: 2px 0px 2px 0px;padding: 5px}
-
-.attribute-label {
-	width: 33%;
-	// background-color: grey
-}
