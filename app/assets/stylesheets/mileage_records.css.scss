@@ -15,7 +15,7 @@ $orange: #EE7836;
 $red: #cc0000;
 $purple: #663399;
 
-.records-table {width:100%;font-size:.8em;border: none;color: $darkgrey;margin-top: 20px;}
+.records-table {width:100%;font-size:.9em;border: none;color: $darkgrey;margin-top: 20px;}
 
 .tr-row td {
 	display: block;
@@ -57,7 +57,7 @@ td.actions a:nth-child(2) {background-color: $purple;@media #{$small} { &:hover 
 
 .bg-grey {background-color: $darkgrey; color: white}
 
-.button-blue {width:100%;background-color: $blue; font-weight: 200; display:block;margin:20px 0px; padding:1em;color:white;border:none;font-size:.8em;font-weight:thin}
+.button-blue {width:100%;background-color: $blue; font-weight: 200; display:block;margin:20px 0px; padding:1em;color:white;border:none;font-size:.9em;font-weight:thin}
 .button-blue:hover {color:white;cursor: pointer}
 .mileage-record { @media #{$small} {font-size: .9em }}
 
@@ -67,4 +67,4 @@ div.date-select select:nth-child(3) {width: 28%;}
 div.date-select select:nth-child(4) {width: 41.25%;}
 div.date-select select:nth-child(5) {width: 28%;}
 
-div.date-select select {height: 50px;}
+select {height: 40px;}

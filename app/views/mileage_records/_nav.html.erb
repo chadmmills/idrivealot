@@ -5,15 +5,20 @@
     </li>
     <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
   </ul>
+
+  <% if user_signed_in? %>
     <section class="top-bar-section">
     <!-- Right Nav Section -->
-    <ul class="right">
-      <li class="hide-for-small"><%= link_to "NEW ENTRY", new_mileage_record_path %></li>
-      <li class="has-dropdown">
-        <a href="#">OPTIONS</a>
-        <ul class="dropdown">
-          <li><a href="#">EDIT PROFILE</a></li>
-        </ul>
-      </li>
-    </ul>
+      <ul class="right">
+        <li class="hide-for-small"><%= link_to "NEW ENTRY", new_mileage_record_path %></li>
+        <li class="has-dropdown">
+          <a href="#">OPTIONS</a>
+          <ul class="dropdown">
+            <li><a href="#">EDIT PROFILE</a></li>
+          </ul>
+        <li><%= link_to "LOG OUT", destroy_user_session_path, :method => :delete %></li>
+        </li>
+      </ul>
+    </section>
+  <% end %>
 </nav>

@@ -14,7 +14,7 @@ feature "New Mileage Record" do
 		expect(page.source).to_not have_text "Hello there"
 		expect(page.source).to have_text "This should show up"
 		fill_in "new_route_description", with: "Trip to Honda"
-		click_button 'Create Mileage Record'
+		click_button 'EDIT ENTRY'
 		expect(page).to have_content "Trip to Honda"
 	end	
 end
