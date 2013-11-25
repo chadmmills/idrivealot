@@ -16,49 +16,53 @@
   </div>
 
   <div class="row">
-    <div class="small-12 columns">
+    <div class="small-12 large-5 large-centered columns date-select">
       <%= f.label :record_date, "Date" %><br>
-      <%= f.date_select :record_date %>
+      <%= f.date_select :record_date, order: [:day, :month, :year] %>
     </div>
   </div>
   <div class="row">
-    <div class="small-12 columns">
+    <div class="small-12 large-5 large-centered columns">
       <%= label_tag :new_route_description, "Enter New Route" %><br />
       <%= text_field_tag :new_route_description %>
     </div>
   </div>
   <div class="row">
-    <div class="small-12 columns tc">
-      -- OR --
+    <div class="small-12 large-5 large-centered columns text-center">
+      - OR -
     </div>
   </div>
   <div class="row">
-    <div class="small-12 columns">
+    <div class="small-12 large-5 large-centered columns">
       <%= f.label :route_description, "Select Route" %><br>
-      <%= select("mileage_record", "route_description", @routes, :include_blank => true )  %>
+      <%= select("mileage_record", "route_description", @routes, {include_blank: "Select Route"} )  %>
     </div>
   </div>
   <div class="row">
-    <div class="small-12 columns">
+    <div class="small-12 large-5 large-centered columns">
       <%= f.label :start_mileage, "Start Mileage" %><br>
       <%= f.number_field :start_mileage %>
     </div>
   </div>
   <div class="row">
-    <div class="small-12 columns">
+    <div class="small-12 large-5 large-centered columns">
       <%= f.label :end_mileage, "End Mileage" %><br>
       <%= f.number_field :end_mileage, :placeholder => "i.e. 34,269" %>
     </div>
   </div>
   <div class="row">
-    <div class="small-12 columns">
+    <div class="small-12 large-5 large-centered columns">
       <%= f.label :notes %><br>
       <%= f.text_area :notes %>
     </div>
   </div>
   <div class="row">
-    <div class="small-12 columns">
-      <%= f.submit "Create Mileage Record", :class => "button-blue w-full" %>
+    <div class="small-12 large-5 large-centered columns">
+      <% if current_page?(new_mileage_record_path) %>
+        <%= f.submit "CREATE MILEAGE ENTRY", :class => "button-blue w-full" %>
+      <% else %>
+        <%= f.submit "EDIT ENTRY", :class => "button-blue w-full" %>
+      <% end %>
     </div>
   </div>
 <% end %>

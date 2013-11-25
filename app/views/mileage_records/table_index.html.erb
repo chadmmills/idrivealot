@@ -1,23 +1,4 @@
-<nav class="top-bar">
-  <ul class="title-area">
-    <li class="name">
-      <h1><a href="#">MILEAGE TRACKER</a></h1>
-    </li>
-    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
-  </ul>
-
-    <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="right">
-      <li class="hide-for-small"><a href="#">NEW RECORD</a></li>
-      <li class="has-dropdown">
-        <a href="#">OPTIONS</a>
-        <ul class="dropdown">
-          <li><a href="#">First link in dropdown</a></li>
-        </ul>
-      </li>
-    </ul>
-</nav>
+<%= render :partial => 'nav', locals: {:message => nil} %>
 
 <div class="row show-for-small">
   <div class="small-12 columns m-20">

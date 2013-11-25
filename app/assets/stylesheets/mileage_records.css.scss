@@ -4,10 +4,6 @@
 
 @import 'foundation';
 @import 'foundation_and_overrides';
-
-
-
-
 // $small-screen: 768px;
 // $small: "only screen and (min-width: #{$small-screen})";
 
@@ -50,6 +46,8 @@ td.actions a {
 	color: white;
 }
 
+label {font-weight:300}
+
 td.actions a:nth-child(1) {background-color: $green;@media #{$small} { &:hover {background-color:darken($green,5%)}}}
 td.actions a:nth-child(2) {background-color: $purple;@media #{$small} { &:hover {background-color:darken($purple,5%)}}}
 
@@ -59,7 +57,14 @@ td.actions a:nth-child(2) {background-color: $purple;@media #{$small} { &:hover 
 
 .bg-grey {background-color: $darkgrey; color: white}
 
-.button-blue {width:100%;background-color: $blue; font-weight: 200; display:block;margin:20px 0px; padding:1em;color:white}
-.button-blue:hover {color:white;}
+.button-blue {width:100%;background-color: $blue; font-weight: 200; display:block;margin:20px 0px; padding:1em;color:white;border:none;font-size:.8em;font-weight:thin}
+.button-blue:hover {color:white;cursor: pointer}
 .mileage-record { @media #{$small} {font-size: .9em }}
 
+form {margin: 20px 0px 20px 0px}
+
+div.date-select select:nth-child(3) {width: 28%;}
+div.date-select select:nth-child(4) {width: 41.25%;}
+div.date-select select:nth-child(5) {width: 28%;}
+
+div.date-select select {height: 50px;}

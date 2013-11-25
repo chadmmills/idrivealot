@@ -1,5 +1,5 @@
 MileageTracker::Application.routes.draw do
-  resources :mileage_records
+  resources :mileage_records, :path => "mileage-records"
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

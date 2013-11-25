@@ -1,6 +1,10 @@
-<h1>Editing mileage_record</h1>
+<%= render :partial => 'nav', locals: {:message => "EDIT ENTRY"} %>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @mileage_record %> |
-<%= link_to 'Back', mileage_records_path %>
+<div class="row">
+	<div class="small-12 columns">
+		<%= link_to 'Show', @mileage_record %> |
+		<%= link_to 'Back', mileage_records_path %>
+	</div>
+</div>
