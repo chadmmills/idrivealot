@@ -39,7 +39,7 @@ gem 'rvm-capistrano'
 group :development do
 	gem 'guard-livereload', require: false
   gem 'capistrano'
-  gem 'sqlite3'
+  gem 'pg'
 end
 
 gem 'devise'
