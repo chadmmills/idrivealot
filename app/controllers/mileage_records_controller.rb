@@ -3,7 +3,7 @@ class MileageRecordsController < ApplicationController
   before_action :set_mileage_record, only: [:show, :edit, :update, :destroy]
   before_action :set_routes_select_data, only: [:create, :new, :edit]
 
-  # GET /mileage_records
+  # GET /mileage-records
   def index
     @mileage_records = current_user.mileage_records.order("record_date DESC, end_mileage DESC")
     respond_to do |f|
