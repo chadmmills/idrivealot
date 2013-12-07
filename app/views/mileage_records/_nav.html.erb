@@ -1,4 +1,4 @@
-<nav class="top-bar">
+<nav class="top-bar" data-topbar>
   <ul class="title-area">
     <li class="name">
       <h1><a href="#"><%= message ? message : "MILEAGE TRACKER" %></a></h1>
@@ -10,13 +10,17 @@
     <section class="top-bar-section">
     <!-- Right Nav Section -->
       <ul class="right">
+        <% unless current_page?(root_path) %>
+          <li class="hide-for-small"><%= link_to "HOME", root_path %></li>
+        <% end %>
         <li class="hide-for-small"><%= link_to "NEW ENTRY", new_mileage_record_path %></li>
         <li class="has-dropdown">
           <a href="#">OPTIONS</a>
           <ul class="dropdown">
-            <li><a href="#">EDIT PROFILE</a></li>
+            <li><%= link_to "EDIT PROFILE", edit_user_registration_path %></li>
+            <li><%= link_to "DOWNLOAD", download_data_path %></li>
+            <li><%= link_to "LOG OUT", destroy_user_session_path, :method => :delete %></li>
           </ul>
-        <li><%= link_to "LOG OUT", destroy_user_session_path, :method => :delete %></li>
         </li>
       </ul>
     </section>

@@ -1,0 +1,7 @@
+<%= render :partial => 'nav', locals: {:message => "DOWNLOAD MILEAGE DATA"} %>
+
+<div class="row">
+	<div class="columns">
+		<%= link_to "DOWNLOAD ALL DATA", :action => :index, :format => :csv %>
+	</div>
+</div>

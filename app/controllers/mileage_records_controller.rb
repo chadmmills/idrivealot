@@ -43,7 +43,7 @@ class MileageRecordsController < ApplicationController
       redirect_to mileage_records_url, notice: 'Mileage record was successfully updated.'
     else
     render action: 'edit'
-  end
+    end
   end
 
   # DELETE /mileage_records/1
@@ -54,6 +54,9 @@ class MileageRecordsController < ApplicationController
       format.html { redirect_to mileage_records_url }
       format.json { head :no_content }
     end
+  end
+
+  def download
   end
 
   private

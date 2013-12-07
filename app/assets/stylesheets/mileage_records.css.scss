@@ -15,8 +15,10 @@ $orange: #EE7836;
 $red: #cc0000;
 $purple: #663399;
 
-.records-table {width:100%;font-size:.9em;border: none;color: $darkgrey;margin-top: 20px;}
+h1,h2,h3,h4,h5,h6 {font-weight:200}
 
+.records-table {width:100%;font-size:.9em;border: none;color: $darkgrey;margin-top: 20px;}
+.records-table th, td {font-weight:300 !important}
 .tr-row td {
 	display: block;
 	padding-left: 0px;
@@ -54,6 +56,7 @@ td.actions a:nth-child(2) {background-color: $purple;@media #{$small} { &:hover 
 .top-bar .name h1 a {font-weight: 200;width:75%;white-space: nowrap;}
 
 .top-bar-section ul li > a {font-weight:200; background: $darkgrey}
+.top-bar-section .dropdown li a {font-weight:200}
 
 .bg-grey {background-color: $darkgrey; color: white}
 
@@ -67,7 +70,10 @@ div.date-select select:nth-child(3) {width: 28%;}
 div.date-select select:nth-child(4) {width: 41.25%;}
 div.date-select select:nth-child(5) {width: 28%;}
 
-select {height: 40px;}
 
 .remember-me div {display:inline-block}
 .remember-me div:nth-child(1) {margin-right:5px}
+
+#error_explanation {color: $red}
+#error_explanation li {list-style: none}
+#error_explanation h2 {text-align:center;color:$red}
