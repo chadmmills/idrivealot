@@ -8,6 +8,7 @@ MileageTracker::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'mileage_records#index'
   get 'download' => 'mileage_records#download', as: :download_data
+  post 'download/month' => 'mileage_records#download_month'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

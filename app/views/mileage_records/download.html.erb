@@ -2,6 +2,28 @@
 
 <div class="row">
 	<div class=" medium-8 medium-centered large-6 large-centered columns">
+		<%= form_tag("/download/month", method: "post") do %>
+		  <%= label_tag(:selected_month, "Select Month") %>
+		  <div class="row">
+		  	<div class="small-8 columns">
+		  		<%= select_month(Date.today) %>
+		  	</div>
+		  	<div class="small-4 columns">
+		  		<%= select_year(Date.today) %>
+		  	</div>
+		  </div>
+		  <%= submit_tag("GET DATA", :class => "button") %>
+		<% end %>
+	</div>
+</div>
+<div class="row">
+	<div class=" medium-8 medium-centered large-6 large-centered columns text-center">
+		- OR -
+	</div>
+</div>
+
+<div class="row">
+	<div class=" medium-8 medium-centered large-6 large-centered columns">
 		<%= link_to "DOWNLOAD ALL DATA", mileage_records_path(:format => :xlsx), :class => "button download_all_button" %>
 	</div>
 </div>

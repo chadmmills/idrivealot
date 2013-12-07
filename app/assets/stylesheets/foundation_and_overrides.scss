@@ -149,9 +149,9 @@ $small: "only screen and (min-width: #{$small-screen})";
 // Grid Variables
 //
 
-// $row-width: em-calc(1000);
-// $column-gutter: em-calc(30);
-// $total-columns: 12;
+$row-width: em-calc(1000);
+$column-gutter: em-calc(10);
+$total-columns: 12;
 
 //
 // Block Grid Variables

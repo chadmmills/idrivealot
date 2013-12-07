@@ -60,6 +60,13 @@ class MileageRecordsController < ApplicationController
   def download
   end
 
+  def download_month
+    month_value = params.require(:date).permit(:month, :year)
+    search_date = Date.strptime("#{month_value[:year]}-#{month_value[:month]}-1", '%Y-%m-%d')
+    @download_data = current_user.mileage_records.where("record_date <= ? AND record_date > ?", search_date.end_of_month, search_date-1)
+    send_data @download_data.to_xlsx.to_stream.read, filename: "#{search_date} Mileage.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_mileage_record
