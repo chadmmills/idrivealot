@@ -9,6 +9,7 @@ class MileageRecordsController < ApplicationController
     respond_to do |f|
       f.html { render "table_index" }
       f.csv { send_data @mileage_records.to_csv(current_user), type: 'text/csv; charset=utf-8; header=present' }
+      f.xlsx { send_data @mileage_records.to_xlsx.to_stream.read, :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet" }
     end
   end
 
