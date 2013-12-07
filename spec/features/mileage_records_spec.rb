@@ -8,7 +8,7 @@ feature "New Mileage Record" do
 		visit root_path
 		fill_in 'Email', with: user.email
 		fill_in 'Password', with: user.password
-		click_button 'Sign in'
+		click_button 'LOGIN'
 		click_link "Edit"
 		#save_and_open_page
 		expect(page.source).to_not have_text "Hello there"

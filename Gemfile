@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.1'
+gem 'rails', '4.0.2'
 
 group :production do
   gem 'pg'
@@ -56,6 +56,7 @@ group :test do
   gem "database_cleaner", "~> 1.0.1"
   gem "launchy", "~> 2.3.0"
   gem "selenium-webdriver", "~> 2.35.1"
+  gem "sqlite3"
 end
 
 ruby "2.0.0"
