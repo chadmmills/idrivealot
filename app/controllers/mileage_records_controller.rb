@@ -7,6 +7,7 @@ class MileageRecordsController < ApplicationController
   def index
     @mileage_records = current_user.mileage_records.order("record_date DESC, end_mileage DESC")
     @mileage_record = current_user.mileage_records.new
+    @mileage_record.start_mileage = MileageRecord.last_end_mileage_for(current_user)
     respond_to do |f|
       f.html { render "table_index" }
       f.csv { send_data @mileage_records.to_csv(current_user), type: 'text/csv; charset=utf-8; header=present' }
