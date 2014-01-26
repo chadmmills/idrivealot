@@ -1,11 +1,12 @@
 class MileageRecordsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_mileage_record, only: [:show, :edit, :update, :destroy]
-  before_action :set_routes_select_data, only: [:create, :new, :edit]
+  before_action :set_routes_select_data, only: [:create, :new, :edit, :index, :update]
 
   # GET /mileage-records
   def index
     @mileage_records = current_user.mileage_records.order("record_date DESC, end_mileage DESC")
+    @mileage_record = current_user.mileage_records.order(:record_date).last
     respond_to do |f|
       f.html { render "table_index" }
       f.csv { send_data @mileage_records.to_csv(current_user), type: 'text/csv; charset=utf-8; header=present' }
@@ -64,7 +65,7 @@ class MileageRecordsController < ApplicationController
     month_value = params.require(:date).permit(:month, :year)
     search_date = Date.strptime("#{month_value[:year]}-#{month_value[:month]}-1", '%Y-%m-%d')
     @download_data = current_user.mileage_records.where("record_date <= ? AND record_date > ?", search_date.end_of_month, search_date-1)
-    send_data @download_data.to_xlsx.to_stream.read, filename: "#{search_date} Mileage.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet"
+    send_data @download_data.to_xlsx.to_stream.read, filename: "#{search_date} Mileage.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'inline'
   end
 
   private

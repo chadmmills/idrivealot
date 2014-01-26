@@ -1,4 +1,4 @@
-<%= form_for(@mileage_record) do |f| %>
+<%= form_for(@mileage_record, :url => @mileage_record.persisted? ? mileage_record_path(@mileage_record) : mileage_records_path(@mileage_record)) do |f| %>
   <div class="row">
     <div class="small-12 columns">
       <% if @mileage_record.errors.any? %>
@@ -61,7 +61,7 @@
       <% if current_page?(new_mileage_record_path) %>
         <%= f.submit "CREATE MILEAGE ENTRY", :class => "button button-blue" %>
       <% else %>
-        <%= f.submit "EDIT ENTRY", :class => "button button-blue" %>
+        <%= f.submit "SAVE", :class => "button button-blue" %>
       <% end %>
     </div>
   </div>
