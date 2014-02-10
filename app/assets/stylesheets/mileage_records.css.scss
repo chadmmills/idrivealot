@@ -66,9 +66,9 @@ td.actions a:nth-child(2) {background-color: $purple;@media #{$small} { &:hover 
 
 form {margin: 20px 0px 20px 0px}
 
+div.date-select select:nth-child(1) {width: 28%;}
+div.date-select select:nth-child(2) {width: 41.25%;}
 div.date-select select:nth-child(3) {width: 28%;}
-div.date-select select:nth-child(4) {width: 41.25%;}
-div.date-select select:nth-child(5) {width: 28%;}
 
 
 .remember-me div {display:inline-block}

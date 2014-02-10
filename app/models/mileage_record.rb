@@ -11,8 +11,8 @@ class MileageRecord < ActiveRecord::Base
 
     #   t.timestamps
 
-  validates :user_id, :record_date, :start_mileage, :end_mileage, :route_description, presence: true
-  validates :start_mileage, :end_mileage, numericality: { only_integer: true }
+  validates :user_id, :record_date, :start_mileage, :route_description, presence: true
+  validates :start_mileage, numericality: { only_integer: true }
   validate :start_less_than_end_mileage
   belongs_to :user
 
@@ -40,7 +40,7 @@ class MileageRecord < ActiveRecord::Base
 
   private
     def set_distance
-      self.distance = self.end_mileage - self.start_mileage
+      self.distance = self.end_mileage - self.start_mileage if self.end_mileage
     end
 
     def start_less_than_end_mileage
