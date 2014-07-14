@@ -1,0 +1,7 @@
+= render :partial => 'nav', locals: {:message => "EDIT ENTRY"}
+= render 'form'
+.row
+  .small-12.columns
+    = link_to 'Show', @mileage_record
+    |
+    \#{link_to 'Back', mileage_records_path}

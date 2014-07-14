@@ -1,0 +1,25 @@
+%p#notice= notice
+%p
+  %strong Record date:
+  = @mileage_record.record_date
+%p
+  %strong Start mileage:
+  = @mileage_record.start_mileage
+%p
+  %strong End mileage:
+  = @mileage_record.end_mileage
+%p
+  %strong Route description:
+  = @mileage_record.route_description
+%p
+  %strong Distance:
+  = @mileage_record.distance
+%p
+  %strong Notes:
+  = @mileage_record.notes
+%p
+  %strong User:
+  = @mileage_record.user
+= link_to 'Edit', edit_mileage_record_path(@mileage_record)
+|
+\#{link_to 'Back', mileage_records_path}

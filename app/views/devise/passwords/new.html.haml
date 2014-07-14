@@ -1,0 +1,16 @@
+%div
+  %h2.bg-grey.tc.h1 Forgot your password?
+= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+  = devise_error_messages!
+  .row
+    .columns
+      %div
+        = f.label :email
+        %br/
+        = f.email_field :email, :autofocus => true
+  .row
+    .columns
+      %div= f.submit "Send Password Reset Email", :class => "button-blue w-full"
+.row
+  .columns.links
+    = render "devise/shared/links"
