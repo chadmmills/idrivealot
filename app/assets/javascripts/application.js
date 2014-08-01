@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//
+
+$(document).on("click","#menu-icon", function(e){
+	$("nav ul").toggle();
+});

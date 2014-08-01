@@ -9,7 +9,6 @@ gem 'axlsx_rails', '~>0.1.5'
 gem 'html2haml'
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
 
@@ -46,9 +45,9 @@ end
 group :development do
 	gem 'guard-livereload', require: false
   gem 'capistrano'
-  gem 'pg'
 end
 
+gem 'pg'
 gem 'devise'
 
 group :development, :test do
@@ -65,6 +64,6 @@ group :test do
   gem "sqlite3"
 end
 
-ruby "2.0.0"
+ruby "2.1.2"
 # Use debugger
 # gem 'debugger', group: [:development, :test]

@@ -49,7 +49,6 @@ class MileageRecordsController < ApplicationController
   end
 
   # DELETE /mileage_records/1
-  # DELETE /mileage_records/1.json
   def destroy
     @mileage_record.destroy
     respond_to do |format|

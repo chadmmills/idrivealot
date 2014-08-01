@@ -13,7 +13,8 @@
   - select("mileage_record", "route_description", @routes, {include_blank: "Select Route"} )
   = f.number_field :start_mileage, :placeholder => "Enter Start Mileage"
   = f.number_field :end_mileage, :placeholder => "Enter End Mileage i.e. 34,269"
-  - if current_page?(new_mileage_record_path)
-    = f.submit "CREATE MILEAGE ENTRY", :class => "button button-blue"
-  - else
-    = f.submit "SAVE", :class => "button button-blue"
+  .buttons
+    .buttons-half
+      = f.submit "SAVE", :class => "button button-blue"
+    .buttons-half
+      = link_to "NEW", new_mileage_record_path
