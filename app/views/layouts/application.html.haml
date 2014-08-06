@@ -15,12 +15,11 @@
     %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", :name => "viewport"}/
     %title= content_for?(:title) ? yield(:title) : "Mileage Tracker"
     = stylesheet_link_tag    "application"
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet" type="text/css">
+    %link{href: "//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800", rel: "stylesheet", type: "text/css"}
     = csrf_meta_tags
-    = javascript_include_tag "application"
-    %script{:scr => "jquery.fs.shifter.js"}
-  %body
+    = javascript_include_tag "application", "data-turbolinks-track" => true 
+  %body{class: params[:action]}
     = render :partial => 'mileage_records/nav', locals: {:message => "SIGN UP"}
     .container
       = yield
-    %script{:type=>"text/javascript"}
-      document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')

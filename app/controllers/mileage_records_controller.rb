@@ -14,6 +14,9 @@ class MileageRecordsController < ApplicationController
     end
   end
 
+	def list_view
+    @mileage_records = current_user.mileage_records.order("record_date DESC, end_mileage DESC")
+	end
   # GET /mileage_records/1
   def show
   end

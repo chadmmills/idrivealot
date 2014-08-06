@@ -1,5 +1,9 @@
 MileageTracker::Application.routes.draw do
-  resources :mileage_records, :path => "mileage-records"
+  resources :mileage_records, :path => "mileage-records" do
+		collection do
+			get 'list-view' => 'mileage_records#list_view'
+		end
+	end
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
