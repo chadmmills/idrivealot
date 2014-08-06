@@ -2,80 +2,177 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-@import 'foundation_and_overrides';
-// $small-screen: 768px;
-// $small: "only screen and (min-width: #{$small-screen})";
-
-$green: #1EBBA6;
-$blue: #05B2D2;
-$darkgrey: #2D373F;
-$lightgrey: #F8F9FB;
-$orange: #EE7836;
-$red: #cc0000;
-$purple: #663399;
-
-h1,h2,h3,h4,h5,h6 {font-weight:200}
-
-.records-table {width:100%;font-size:.9em;border: none;color: $darkgrey;margin-top: 20px;}
-.records-table th, td {font-weight:300 !important}
-.tr-row td {
-	display: block;
-	padding-left: 0px;
-	padding-right: 0px;
-	@media #{$small} {display:table-cell;padding-top:.01em; padding-bottom: .01em}
+html {
+	margin: 0px;
+	padding: 0px;
 }
 
-.tr-row td:before {padding-right: 10px;}
-
-.tr-row td:nth-child(1):before { content: "Date:"}
-.tr-row td:nth-child(2):before { content: "Route:"}
-.tr-row td:nth-child(3):before { content: "Distance:"}
-.tr-row td:nth-child(4):before { content: "End Mileage:"}
-
-@media #{$small} {
-	.tr-row td:nth-child(1):before { content: ""}
-	.tr-row td:nth-child(2):before { content: ""}
-	.tr-row td:nth-child(3):before { content: ""}
-	.tr-row td:nth-child(4):before { content: ""}
+body {
+	font-family: 'Open Sans', sans-serif;
+	margin: 0px;
+	padding: 0px;
 }
 
-td.actions a {
-	float: left;
-	width: 50%;
-	text-align: center;
-	padding: 10px 0px 10px 0px;
+header {
+	background: #C0E0DD;
+	width: 100%;
+	min-height: 50px;
+	margin-top: 0px;
 	color: white;
+	line-height: 50px;
+
+	h1 {
+		margin: 0px 10px 0px 10px;
+		display: inline-block;
+		font-weight: 400;
+	}
+	#menu-icon {
+		float: right;
+		padding-right: 10px;
+	}
+
+	ul {
+		display: none;
+		margin-right: 5%;
+		margin-left: 5%;
+		padding: 0px;
+		a {
+			width: 100%;
+			display: inline-block;
+			padding: 10px;
+			border-radius: 5px;
+		}
+		a:hover {
+			background-color: darken(#C0E0DD, 15%);
+		}
+	}
+	
+	a {
+		color:white;
+		text-decoration: none;
+	}
+
 }
 
-label {font-weight:300}
+.container {
+	margin: 30px auto;
+	max-width: 500px;
+	@media screen and (max-width: 500px){
+		margin: 30px;
+	}
+}
 
-td.actions a:nth-child(1) {background-color: $green;@media #{$small} { &:hover {background-color:darken($green,5%)}}}
-td.actions a:nth-child(2) {background-color: $purple;@media #{$small} { &:hover {background-color:darken($purple,5%)}}}
+ul {
+	list-style: none;
+	margin: 0;
+}
 
-.top-bar .name h1 a {font-weight: 200;width:75%;white-space: nowrap;}
+li {
+	padding: 10px;
+}
 
-.top-bar-section ul li > a {font-weight:200; background: $darkgrey}
-.top-bar-section .dropdown li a {font-weight:200}
+form {
+	select, input {
+		color: #A2A9A8;
+		margin-bottom: 20px;
+		font-size: 14px;
+		width: 100%;
+	}
+}
 
-.bg-grey {background-color: $darkgrey; color: white}
-
-.button-blue {width:100%;background-color: $blue; font-weight: 200; display:block;margin:20px 0px; padding:1em;color:white;border:none;font-size:.9em;font-weight:thin}
-.button-blue:hover {color:white;cursor: pointer}
-.mileage-record { @media #{$small} {font-size: .9em }}
-
-form {margin: 20px 0px 20px 0px}
-
-div.date-select select:nth-child(1) {width: 28%;}
-div.date-select select:nth-child(2) {width: 41.25%;}
-div.date-select select:nth-child(3) {width: 28%;}
+input[type=text], input[type=email], input[type=password], input[type=number] {
+	/* Remove First */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 
 
-.remember-me div {display:inline-block}
-.remember-me div:nth-child(1) {margin-right:5px}
+	padding: 10px;
+	border: none;
+	box-sizing: border-box;
+	box-shadow: 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 3px;
 
-#error_explanation {color: $red}
-#error_explanation li {list-style: none}
-#error_explanation h2 {text-align:center;color:$red}
+}
 
-.download_all_button {margin-top: 100px; width:100%}
+input[type=submit] {
+	display: inline-block;
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	appearance:none;
+	cursor:pointer;
+}
+
+select {
+	padding: 10px;
+	display: inline-block;
+	border: 1px solid #A2A9A8;
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	appearance:none;
+	cursor:pointer;
+}
+
+.btn {
+	border-radius: 3px;
+	color: #ffffff;
+	font-size: 14px;
+	padding: 10px;
+	text-decoration: none;
+	border: none;
+}
+
+.btn:hover {
+	text-decoration: none;
+}
+
+.buttons {
+
+	.btn {
+		width: 100%;
+		display: inline-block;
+		text-align: center;
+		height: 50px;
+		line-height: 30px;
+	}
+}
+
+.new-button {
+	background-color: #787F7C;
+}
+
+.new-button:hover {
+	background-color: darken(#787F7C, 15%);
+}
+
+.save-button {
+	background-color: darken(#C0E0DD, 15%);
+}
+.save-button:hover {
+	background-color: darken(#C0E0DD, 45%);
+}
+.field {
+	margin-bottom: 15px;
+}
+
+
+.tab-link {
+	display: inline-block;
+	width: 100%;
+	height: 70px;
+	background-color: #AB89A7;
+	color: white;
+	text-align:center;
+	line-height:70px;
+	border-radius: 3px;
+	margin-bottom: 40px;
+	text-decoration: none;
+}
+
+.index .tab-link-index {
+	box-shadow: inset 0 0 10px darken(#AB89A7, 35%);
+}
+
+.list_view .tab-link-list {
+	box-shadow: inset 0 0 10px darken(#AB89A7, 35%);
+}

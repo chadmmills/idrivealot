@@ -1,13 +1,14 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '~>4.1'
 
 gem 'acts_as_xlsx'
 gem 'axlsx_rails', '~>0.1.5'
 
+gem 'html2haml'
+
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
 
@@ -28,6 +29,8 @@ gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem "haml"
+gem "haml-rails"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -37,16 +40,15 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'rvm-capistrano'
+# gem 'rvm-capistrano'
 
 group :development do
 	gem 'guard-livereload', require: false
   gem 'capistrano'
-  gem 'pg'
 end
 
+gem 'pg'
 gem 'devise'
-gem "foundation-rails", "~> 5.0.2.0"
 
 group :development, :test do
   gem "rspec-rails", "~> 2.14.0"
@@ -62,6 +64,6 @@ group :test do
   gem "sqlite3"
 end
 
-ruby "2.0.0"
+ruby "2.1.2"
 # Use debugger
 # gem 'debugger', group: [:development, :test]

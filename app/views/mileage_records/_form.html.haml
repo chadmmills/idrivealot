@@ -1,0 +1,39 @@
+- if @mileage_record.persisted?
+  .row
+    .small-12.columns
+      %h3
+        New Entry
+- else
+  .row
+    .small-12.columns
+      %h3
+        Last Saved Entry
+
+.row
+  .small-12.columns
+    = form_for(@mileage_record, :url => @mileage_record.persisted? ? mileage_record_path(@mileage_record) : mileage_records_path(@mileage_record)) do |f|
+      - if @mileage_record.errors.any?
+        #error_explanation
+          %h4
+            Oops!
+          %ul
+            - @mileage_record.errors.full_messages.each do |msg|
+              %li.error-message
+                = msg
+      .field        
+        - mileage_dates = (1.month.ago.to_date..Date.today).map{ |date| date.strftime("%A, %b-%d") }
+        = select_tag :record_date, options_for_select(mileage_dates, mileage_dates.last)
+      .field        
+        = text_field_tag :new_route_description, nil, placeholder: "Enter New Route"
+      .field        
+        = select("mileage_record", "route_description", @routes, {include_blank: "Select Route"} )
+      .field        
+        = f.number_field :start_mileage, :placeholder => "Enter Start Mileage"
+      .field        
+        = f.number_field :end_mileage, :placeholder => "Enter End Mileage i.e. 34,269"
+      .row
+        .buttons
+          .small-6.columns
+            = f.submit "SAVE", :class => "btn button button-blue save-button"
+          .small-6.columns
+            = link_to "NEW", new_mileage_record_path, class: "btn new-button"

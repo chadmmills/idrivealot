@@ -12,8 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
+//= require turbolinks
 //= require_tree .
-$(document).foundation();
+//
 
-$(function(){ $(document).foundation(); });
+$(document).on("click","#menu-icon", function(e){
+	$("nav ul").toggle();
+});
