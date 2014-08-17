@@ -22,4 +22,5 @@
   %body{class: params[:action]}
     = render :partial => 'mileage_records/nav', locals: {:message => "SIGN UP"}
     .container
+      = render 'layouts/messages'
       = yield

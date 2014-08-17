@@ -1,13 +1,17 @@
 - if @mileage_record.persisted?
   .row
     .small-12.columns
+      %span.save-notice
+        = "Last Saved: #{@mileage_record.updated_at.strftime("%A %B #{@mileage_record.updated_at.day.ordinalize}")}"
+  .row
+    .small-12.columns
       %h3
-        New Entry
+        Current Entry
 - else
   .row
     .small-12.columns
       %h3
-        Last Saved Entry
+        New Entry
 
 .row
   .small-12.columns
@@ -21,16 +25,25 @@
               %li.error-message
                 = msg
       .field        
-        - mileage_dates = (1.month.ago.to_date..Date.today).map{ |date| date.strftime("%A, %b-%d") }
-        = select_tag :record_date, options_for_select(mileage_dates, mileage_dates.last)
+        - mileage_dates = (1.month.ago.to_date..30.days.from_now).map{ |date| [date.strftime("%A, %b-%d"), date] }
+        = f.select :record_date, options_for_select(mileage_dates, Date.today)
       .field        
-        = text_field_tag :new_route_description, nil, placeholder: "Enter New Route"
+        = f.label :route_description, "Destination"
+        - if @mileage_record.route_description
+          = text_field_tag :new_route_description, @mileage_record.route_description
+        - else
+          = text_field_tag :new_route_description, nil, placeholder: "Enter New Route"
       .field        
         = select("mileage_record", "route_description", @routes, {include_blank: "Select Route"} )
-      .field        
-        = f.number_field :start_mileage, :placeholder => "Enter Start Mileage"
-      .field        
-        = f.number_field :end_mileage, :placeholder => "Enter End Mileage i.e. 34,269"
+      .row
+        .small-6.columns
+          .field        
+            = f.label :start_mileage, "Start Mileage"
+            = f.number_field :start_mileage, :placeholder => "Enter Start Mileage"
+        .small-6.columns
+          .field        
+            = f.label :end_mileage, "End Mileage"
+            = f.number_field :end_mileage, :placeholder => "Enter End Mileage i.e. 34,269"
       .row
         .buttons
           .small-6.columns

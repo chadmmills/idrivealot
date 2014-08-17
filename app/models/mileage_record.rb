@@ -10,9 +10,12 @@ class MileageRecord < ActiveRecord::Base
     #   t.references :user, index: true
 
     #   t.timestamps
+	
+	attr_accessor :new_route_description
 
-  validates :user_id, :record_date, :start_mileage, :route_description, presence: true
-  validates :start_mileage, numericality: { only_integer: true }
+  validates :user_id, :record_date, :route_description, presence: true
+	validates :start_mileage, numericality: { only_integer: true }, if: :start_mileage_present?
+	validates :end_mileage, numericality: { only_integer: true }, if: :end_mileage_present?
   validate :start_less_than_end_mileage
   belongs_to :user
 
@@ -50,4 +53,12 @@ class MileageRecord < ActiveRecord::Base
         end
       end
     end
+		
+		def start_mileage_present?
+			self.start_mileage 
+		end
+
+		def end_mileage_present?
+			 self.end_mileage
+		end
 end

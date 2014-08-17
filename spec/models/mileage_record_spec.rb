@@ -32,6 +32,14 @@ describe MileageRecord do
   	expect(build(:mileage_record, end_mileage: 1.024)).to have(1).errors_on(:end_mileage)
   end
 
+	it "is allowed to have nil mileage" do
+		expect(build(:mileage_record, end_mileage: nil, start_mileage: nil)).to be_valid
+	end
+
+	it "is allowed to have nil end mileage" do
+		expect(build(:mileage_record, end_mileage: nil, start_mileage: 90)).to be_valid
+	end
+
   it "is a valid record" do
     expect(create(:mileage_record)).to be_valid
   end

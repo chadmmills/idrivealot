@@ -2,11 +2,12 @@ class MileageRecordsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_mileage_record, only: [:show, :edit, :update, :destroy]
   before_action :set_routes_select_data, only: [:create, :new, :edit, :index, :update]
+	before_action :set_route_description, only: [:create, :update]
 
   # GET /mileage-records
   def index
     @mileage_records = current_user.mileage_records.order("record_date DESC, end_mileage DESC")
-    @mileage_record = current_user.mileage_records.last
+    @mileage_record = current_user.mileage_records.last || current_user.mileage_records.new
     respond_to do |f|
       f.html { render "table_index" }
       f.csv { send_data @mileage_records.to_csv(current_user), type: 'text/csv; charset=utf-8; header=present' }
@@ -33,9 +34,9 @@ class MileageRecordsController < ApplicationController
 
   # POST /mileage_records
   def create
-    @mileage_record = current_user.mileage_records.new(updated_mileage_record_params)
+    @mileage_record = current_user.mileage_records.new(mileage_record_params)
       if @mileage_record.save
-        redirect_to mileage_records_url, notice: 'Mileage record was successfully created.'
+        redirect_to mileage_records_path, notice: 'Mileage record was successfully created.'
       else
         render action: 'new'
       end
@@ -44,7 +45,7 @@ class MileageRecordsController < ApplicationController
   # PATCH/PUT /mileage_records/1
   # PATCH/PUT /mileage_records/1.json
   def update
-    if @mileage_record.update(updated_mileage_record_params)
+    if @mileage_record.update(mileage_record_params)
       redirect_to mileage_records_url, notice: 'Mileage record was successfully updated.'
     else
     render action: 'edit'
@@ -77,7 +78,7 @@ class MileageRecordsController < ApplicationController
     end
 
     def set_routes_select_data
-      @routes = MileageRecord.select("route_description").where(user_id: current_user).group("route_description").map { |r| [r.route_description] }
+      @routes = MileageRecord.where(user: current_user).uniq.pluck(:route_description)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -85,9 +86,7 @@ class MileageRecordsController < ApplicationController
       params.require(:mileage_record).permit(:record_date, :start_mileage, :end_mileage, :route_description, :notes, :new_route_description)
     end
 
-    def updated_mileage_record_params
-      new_params = mileage_record_params
-      new_params[:route_description] = params[:new_route_description] unless params[:new_route_description].blank?
-      return new_params
+    def set_route_description
+      params[:mileage_record][:route_description] = params[:new_route_description] unless params[:new_route_description].blank?
     end
 end

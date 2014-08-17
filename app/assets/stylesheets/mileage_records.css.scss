@@ -72,11 +72,19 @@ li {
 }
 
 form {
+	label {
+		display: block;
+		margin-bottom: 8px;
+	}
 	select, input {
-		color: #A2A9A8;
+		color: #222;
 		margin-bottom: 20px;
 		font-size: 14px;
 		width: 100%;
+
+		:after {
+			content: "HKMM";
+		}
 	}
 }
 
@@ -93,6 +101,24 @@ input[type=text], input[type=email], input[type=password], input[type=number] {
 	box-shadow: 0 0 6px rgba(0,0,0,0.3);
 	border-radius: 3px;
 
+}
+
+$lightGrey: '#A2A9A8';
+
+::-webkit-input-placeholder {
+	color: $lightGrey;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+	color: $lightGrey;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+	color: $lightGrey;  
+}
+
+:-ms-input-placeholder {  
+	color: $lightGrey;  
 }
 
 input[type=submit] {
@@ -175,4 +201,9 @@ select {
 
 .list_view .tab-link-list {
 	box-shadow: inset 0 0 10px darken(#AB89A7, 35%);
+}
+
+.save-notice {
+	color: green;
+	font-size: .8em;
 }
