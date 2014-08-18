@@ -19,3 +19,7 @@
 $(document).on("click","#menu-icon", function(e){
 	$("nav ul").toggle();
 });
+
+$(document).on("click", "a[data-dismiss='alert']", function(e){
+	$(this).parent(".alert").toggle();
+});
