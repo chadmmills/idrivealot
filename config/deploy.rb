@@ -3,7 +3,7 @@ set :deploy_user, 'deploy'
 
 # setup repo details
 set :scm, :git
-set :repo_url, 'git@github.com/cmills1308/TayMileageTracker.git'
+set :repo_url, 'git@github.com:cmills1308/TayMileageTracker.git'
 
 # setup rbenv.
 set :rbenv_type, :system
@@ -22,7 +22,7 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 
 # what specs should be run before deployment is allowed to
 # continue, see lib/capistrano/tasks/run_tests.cap
-set :tests, ['spec/features']
+set :tests, []
 
 # which config files should be copied by deploy:setup_config
 # see documentation in lib/capistrano/tasks/setup_config.cap
