@@ -10,6 +10,7 @@ gem 'html2haml'
 
 group :production do
   gem 'rails_12factor'
+  gem 'unicorn'
 end
 
 # Use SCSS for stylesheets
