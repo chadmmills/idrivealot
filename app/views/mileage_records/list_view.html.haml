@@ -1,2 +1,9 @@
 = render 'tabs'
-= @mileage_records.inspect
+-  @mileage_records.each do |m|
+  .list-row
+    %span
+      = m.record_date.strftime("%m/%d")
+    %span
+      = m.route_description.first(15)
+    %span
+      = m.end_mileage

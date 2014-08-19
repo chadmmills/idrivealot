@@ -71,6 +71,10 @@ class MileageRecordsController < ApplicationController
     send_data @download_data.to_xlsx.to_stream.read, filename: "#{search_date} Mileage.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'inline'
   end
 
+	def stats
+		@mileage_entries = current_user.mileage_records
+	end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_mileage_record

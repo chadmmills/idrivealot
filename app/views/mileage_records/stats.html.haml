@@ -1,0 +1,14 @@
+= render 'tabs'
+
+.stats-wrapper
+  .stat-circle
+    .stat-number
+      = @mileage_entries.length
+    .stat-label
+      Total Entries
+.stats-wrapper
+  .stat-circle
+    .stat-number
+      = @mileage_entries.sum(:distance)
+    .stat-label
+      Miles Driven

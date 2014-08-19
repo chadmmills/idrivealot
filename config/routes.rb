@@ -2,6 +2,7 @@ MileageTracker::Application.routes.draw do
   resources :mileage_records, :path => "mileage-records" do
 		collection do
 			get 'list-view' => 'mileage_records#list_view'
+			get 'stats' => 'mileage_records#stats'
 		end
 	end
 
