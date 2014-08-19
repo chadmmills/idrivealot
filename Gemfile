@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~>4.1'
+gem 'rails', '4.1.5'
 
 gem 'acts_as_xlsx'
 gem 'axlsx_rails', '~>0.1.5'
