@@ -1,12 +1,12 @@
 %header
   %nav
-    %h1{"data-no-turbolink" => "true"}
-      %a{:href => "#"} MT
-    %a#menu-icon{:href => "#", "data-no-turbolink" => "true"} MENU
+    %h1
+      = link_to "ida", root_path
+    %a#menu-icon{:href => "#", "data-no-turbolink" => "true"} &#9776;
     %ul#nav-ul
       - if user_signed_in?
-        %li= link_to "EDIT PROFILE", edit_user_registration_path
-        %li= link_to "DOWNLOAD", download_data_path
-        %li= link_to "LOG OUT", destroy_user_session_path, :method => :delete
+        %li= link_to "Edit Profile", edit_user_registration_path
+        %li= link_to "Download Data", download_data_path
+        %li= link_to "Log Out", destroy_user_session_path, :method => :delete
       - else
-        %li= link_to "SIGN UP", new_user_registration_path
+        %li= link_to "Sign Up", new_user_registration_path

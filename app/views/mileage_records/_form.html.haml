@@ -2,7 +2,10 @@
   .row
     .small-12.columns
       %span.save-notice
-        = "Last Saved: #{@mileage_record.updated_at.strftime("%A %B #{@mileage_record.updated_at.day.ordinalize}")}"
+        %span.label
+          Last Saved:
+        %span.time
+          = @mileage_record.updated_at.strftime("%A %B #{@mileage_record.updated_at.day.ordinalize}")
   .row
     .small-12.columns
       %h3
@@ -34,6 +37,7 @@
         - else
           = text_field_tag :new_route_description, nil, placeholder: "Enter New Route"
       .field        
+        = "- Or Select Previous Route -"
         = select("mileage_record", "route_description", @routes, {include_blank: "Select Route"} )
       .row
         .small-6.columns

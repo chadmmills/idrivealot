@@ -14,7 +14,7 @@ body {
 }
 
 header {
-	background: #C0E0DD;
+	background: darken(#C0E0DD, 25%);
 	width: 100%;
 	min-height: 50px;
 	margin-top: 0px;
@@ -27,8 +27,12 @@ header {
 		font-weight: 400;
 	}
 	#menu-icon {
+		display: inline-block;
 		float: right;
 		padding-right: 10px;
+		padding-left: 10px;
+		width: 50px;
+		font-size: 25px;
 	}
 
 	ul {
@@ -81,11 +85,22 @@ form {
 		margin-bottom: 20px;
 		font-size: 14px;
 		width: 100%;
+		height: 45px;
 
 		:after {
 			content: "HKMM";
 		}
 	}
+}
+
+select:before {
+	content: "\f0dd";
+	font-family: 'FontAwesome';
+}
+.select-triangle {
+//	position: relative;
+//	top: -65px;
+//	left: 92%;
 }
 
 input[type=text], input[type=email], input[type=password], input[type=number] {
@@ -132,7 +147,8 @@ input[type=submit] {
 select {
 	padding: 10px;
 	display: inline-block;
-	border: 1px solid #A2A9A8;
+	background-color: #F0F0F0;
+	border: none;
 	-webkit-appearance:none;
 	-moz-appearance:none;
 	appearance:none;
@@ -140,7 +156,7 @@ select {
 }
 
 .btn {
-	border-radius: 3px;
+	border-radius: 10px;
 	color: #ffffff;
 	font-size: 14px;
 	padding: 10px;
@@ -158,7 +174,7 @@ select {
 		width: 100%;
 		display: inline-block;
 		text-align: center;
-		height: 50px;
+		height: 65px;
 		line-height: 30px;
 	}
 }
@@ -183,8 +199,6 @@ select {
 
 
 .tabs {
-	background-color: lighten(lightgrey, 15%);
-	margin: auto;
 	margin-bottom: 40px;
 	height: 70px;
 	border-radius: 3px;
@@ -196,17 +210,25 @@ select {
 }
 
 .tab-link {
-	display: block;
-	width: 80%;
+	display: inline-block;
+	width: 80px;
 	text-align:center;
-	height:60px;
 	border-radius: 10px;
 	text-decoration: none;
 	margin: auto;
-	line-height: 60px;
 	margin-top: 5px;
-	font-size: 14px;
 	color: grey;
+	padding-bottom: 10px;
+}
+
+.tab-link:hover {
+	background-color: #F0F0F0;
+}
+
+.tab-link i {
+	padding-top: 15px;
+	width: 100%;
+	text-align:center;
 }
 
 .index .tab-link-index {
@@ -225,8 +247,11 @@ select {
 }
 
 .save-notice {
-	color: green;
 	font-size: .8em;
+}
+
+.save-notice .time {
+	color: darken(#C0E0DD, 25%);
 }
 
 .stat-circle {
