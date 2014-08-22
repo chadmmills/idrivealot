@@ -3,15 +3,15 @@
 	margin-bottom: 30px;
 	font-size: 14px;
 	line-height: 40px;
-	height: 65px;
+	min-height: 65px;
 }
 
 .alert .close {
 	float: right;
-	margin: 10px;
 	position: relative;
 	top: -2px;
 	right: 5px;
+	padding: 10px 20px 10px 20px;
 }
 
 .alert-error {

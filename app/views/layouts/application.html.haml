@@ -20,7 +20,7 @@
     = csrf_meta_tags
     = javascript_include_tag "application", "data-turbolinks-track" => true 
   %body{class: params[:action]}
-    = render :partial => 'mileage_records/nav', locals: {:message => "SIGN UP"}
+    = render 'mileage_records/nav'
     .container
       = render 'layouts/messages'
       = yield
