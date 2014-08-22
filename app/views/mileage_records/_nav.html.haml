@@ -2,7 +2,7 @@
   %nav
     %h1
       = link_to "ida", root_path
-    %a#menu-icon &#9776;
+    %a#menu-icon{href: "#", data: {no_turbolink: true}} &#9776;
     %ul#nav-ul
       - if user_signed_in?
         %li= link_to "Edit Profile", edit_user_registration_path

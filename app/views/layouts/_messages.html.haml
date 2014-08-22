@@ -1,6 +1,6 @@
 - flash.each do |key, value|
   .alert{class: "alert-#{key}"}
-    %a.close{data: {dismiss: "alert"}} x
+    %a.close{href: "#", data: {no_turbolink: true}, data: {dismiss: "alert"}} x
     %ul
       %li
         = value
