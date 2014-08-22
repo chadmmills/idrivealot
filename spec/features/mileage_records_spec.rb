@@ -7,7 +7,7 @@ feature "User" do
 		fill_in 'new_route_description', with: "Store 89"
 		fill_in 'Start Mileage', with: 1
 		fill_in 'End Mileage', with: 23
-		click_button 'SAVE'
+		click_button 'Save'
 		expect(page).to have_content "Last Saved:"
 		expect(page).to have_content "Store 89"
 	end	
@@ -17,7 +17,7 @@ feature "User" do
 		existing_mileage_record = create(:mileage_record, user: user)
 		signin user	
 		fill_in 'new_route_description', with: "JK Store 92"
-		click_button "SAVE"
+		click_button "Save"
 		expect(page).to have_content "JK Store 92"
 	end
 
@@ -26,7 +26,7 @@ feature "User" do
 		mileage_record_1 = create(:mileage_record, user: user)
 		mileage_record_2 = create(:mileage_record, user: user)
 		signin user	
-		click_link "LIST VIEW"
+		click_link "List"
 		expect(page).to have_content mileage_record_1.route_description
 		expect(page).to have_content mileage_record_2.route_description
 		expect(page).to_not have_content mileage_record_1.created_at
@@ -56,5 +56,5 @@ def signin user
 	visit root_path
 	fill_in 'Email', with: user.email
 	fill_in 'Password', with: user.password
-	click_button "LOGIN"
+	click_button "Login"
 end
