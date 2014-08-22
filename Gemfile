@@ -70,6 +70,5 @@ group :test do
   gem "sqlite3"
 end
 
-ruby "2.1.2"
 # Use debugger
 # gem 'debugger', group: [:development, :test]

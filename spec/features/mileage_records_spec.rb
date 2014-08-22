@@ -29,16 +29,26 @@ feature "User" do
 		click_link "LIST VIEW"
 		expect(page).to have_content mileage_record_1.route_description
 		expect(page).to have_content mileage_record_2.route_description
+		expect(page).to_not have_content mileage_record_1.created_at
 	end
 
 	scenario "can update their login information" do
 		user = create(:user, email: 'update@exmaple.com')
 		signin user	
-		click_link "EDIT PROFILE"
+		click_link "Edit Profile"
 		fill_in 'Email', with: 'newemail@example.com'
 		fill_in 'Current password', with: user.password
 		click_button "Update"
 		expect(page).to have_content "successfully"
+	end
+
+	scenario "can view stats regarding their entries" do
+		user = create(:user, email: 'update@exmaple.com')
+		ml = create(:mileage_record, user: user, end_mileage: 200)
+		ml2 = create(:mileage_record, user: user, start_mileage: 200, end_mileage: 410)
+		signin user
+		click_link "Stats"
+		expect(page).to have_content "410"
 	end
 end
 
