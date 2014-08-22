@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.tc {text-align: center}
+
 html {
 	margin: 0px;
 	padding: 0px;
@@ -188,7 +190,7 @@ select {
 		display: inline-block;
 		text-align: center;
 		height: 65px;
-		line-height: 30px;
+		line-height: 45px;
 	}
 }
 
@@ -206,6 +208,12 @@ select {
 .save-button:hover {
 	background-color: darken(#C0E0DD, 45%);
 }
+
+.download-all {
+	display: block;
+	width: 100%;
+}
+
 .field {
 	margin-bottom: 15px;
 }
@@ -231,7 +239,7 @@ select {
 	margin: auto;
 	margin-top: 5px;
 	color: grey;
-	padding-bottom: 10px;
+	padding: 0px 10px 10px 10px;
 }
 
 .tab-link:hover {

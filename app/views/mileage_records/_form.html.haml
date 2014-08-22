@@ -37,7 +37,7 @@
         - else
           = text_field_tag :new_route_description, nil, placeholder: "Enter New Route"
       .field        
-        = "- Or Select Previous Route -"
+        = label_tag 'mileage_record_route_description', "- Or Select Previous Route -", class: "tc"
         = select("mileage_record", "route_description", @routes, {include_blank: "Select Route"} )
       .row
         .small-6.columns
@@ -51,6 +51,6 @@
       .row
         .buttons
           .small-6.columns
-            = f.submit "SAVE", :class => "btn button button-blue save-button"
+            = f.submit "Save", :class => "btn button button-blue save-button"
           .small-6.columns
-            = link_to "NEW", new_mileage_record_path, class: "btn new-button"
+            = link_to "New", new_mileage_record_path, class: "btn new-button"
