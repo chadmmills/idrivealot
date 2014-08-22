@@ -85,7 +85,7 @@ form {
 		margin-bottom: 20px;
 		font-size: 14px;
 		width: 100%;
-		height: 45px;
+		height: 55px;
 
 		:after {
 			content: "HKMM";
@@ -111,11 +111,24 @@ input[type=text], input[type=email], input[type=password], input[type=number] {
 
 
 	padding: 10px;
-	border: none;
+	border: 1px solid lightgrey;
 	box-sizing: border-box;
-	box-shadow: 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 3px;
+	border-radius: 10px;
 
+}
+
+.remember-me div {
+	display: inline-block;
+}
+
+.remember-me div:nth-child(1) {
+	width: 20px;
+	height: 20px;
+}
+
+.remember-me div:nth-child(2) {
+	width: 120px;
+	height: 55px;
 }
 
 $lightGrey: '#A2A9A8';
@@ -158,7 +171,7 @@ select {
 .btn {
 	border-radius: 10px;
 	color: #ffffff;
-	font-size: 14px;
+	font-size: 18px;
 	padding: 10px;
 	text-decoration: none;
 	border: none;
@@ -188,7 +201,7 @@ select {
 }
 
 .save-button {
-	background-color: darken(#C0E0DD, 15%);
+	background-color: #6bb6af;
 }
 .save-button:hover {
 	background-color: darken(#C0E0DD, 45%);

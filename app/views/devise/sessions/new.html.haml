@@ -1,12 +1,11 @@
 = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
   %div
-    = f.label :email
-    = f.email_field :email, :autofocus => true, placeholder: "Enter Email"
+    = f.email_field :email, :autofocus => true, placeholder: "Email"
   %div
-    = f.label :password
-    = f.password_field :password, placeholder: "Enter Password"
+    = f.password_field :password, placeholder: "Password"
   - if devise_mapping.rememberable?
-    %div= f.check_box :remember_me
-    %div= f.label :remember_me, :class => "il"
-  %div= f.submit "LOGIN", :class => "btn"
+    %div.remember-me
+      %div= f.check_box :remember_me
+      %div= f.label :remember_me, :class => "il"
+  %div= f.submit "Login", :class => "btn button button-blue save-button"
 = render "devise/shared/links"
