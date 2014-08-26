@@ -21,8 +21,6 @@ class MileageRecord < ActiveRecord::Base
 
   before_save :set_distance
 
-  acts_as_xlsx
-
   public
     def self.last_end_mileage_for(user)
       if MileageRecord.where(user_id: user).count < 1

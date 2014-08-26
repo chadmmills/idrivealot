@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe MileageRecordsController do
-
   # # This should return the minimal set of attributes required to create a valid
   # # MileageRecord. As you add validations to MileageRecord, be sure to
   # # adjust the attributes here as well.
@@ -68,21 +67,27 @@ describe MileageRecordsController do
     end
   end
 
-  describe "CSV output" do
-    login_user
-    it "returns a csv file" do
-      get :index, format: :csv
-      expect(response.headers['Content-Type']).to have_content 'text/csv'
+  describe "XLSX output" do
+		render_views
+		context "for #month_download" do
+			it "returns a xslx file" do
+				user = create(:user)
+				mr = create(:mileage_record, user: user)
+				sign_in user
+				post :download_month, "date" => { "month" => Date.today.month, "year" => Date.today.year }
+				puts response.body.inspect
+				expect(response.headers['Content-Type']).to have_content 'openxml'
+			end
+		end
+
+    xit "returns csv content" do
+			create(:mileage_record, user: subject.current_user)
+			create(:mileage_record, end_mileage: 1024, route_description: "95 to 89 Chattanooga Route", user: subject.current_user)
+			get :index, format: :csv
+			expect(response.body).to have_content "95 to 89 Chattanooga Route"
     end
 
-    it "returns csv content" do
-      create(:mileage_record, user: subject.current_user)
-      create(:mileage_record, end_mileage: 1024, route_description: "95 to 89 Chattanooga Route", user: subject.current_user)
-      get :index, format: :csv
-      expect(response.body).to have_content "95 to 89 Chattanooga Route"
-    end
-
-    it "only includes current_user content" do
+    xit "only includes current_user content" do
       create(:mileage_record, route_description: "Do not include")
       get :index, format: :csv
       expect(response.body).to_not have_content "Do not include"

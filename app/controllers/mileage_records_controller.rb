@@ -6,11 +6,10 @@ class MileageRecordsController < ApplicationController
 
   # GET /mileage-records
   def index
-    @mileage_records = current_user.mileage_records.order("record_date DESC, end_mileage DESC")
     @mileage_record = current_user.mileage_records.last || current_user.mileage_records.new
     respond_to do |f|
       f.html { render "table_index" }
-      f.csv { send_data @mileage_records.to_csv(current_user), type: 'text/csv; charset=utf-8; header=present' }
+    #  f.csv { send_data @mileage_records.to_csv(current_user), type: 'text/csv; charset=utf-8; header=present' }
       f.xlsx { send_data @mileage_records.to_xlsx.to_stream.read, :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet" }
     end
   end
@@ -62,13 +61,16 @@ class MileageRecordsController < ApplicationController
   end
 
   def download
+		#If respond_to format is xlsx send all data else render download template
   end
 
   def download_month
     month_value = params.require(:date).permit(:month, :year)
     search_date = Date.strptime("#{month_value[:year]}-#{month_value[:month]}-1", '%Y-%m-%d')
-    @download_data = current_user.mileage_records.where("record_date <= ? AND record_date > ?", search_date.end_of_month, search_date-1)
-    send_data @download_data.to_xlsx.to_stream.read, filename: "#{search_date} Mileage.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'inline'
+    @download_data = current_user.mileage_records.order(:record_date).all #.where("record_date <= ? AND record_date > ?", search_date.end_of_month, search_date-1)
+    #send_data @download_data.inspect, filename: "#{search_date} Mileage.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'inline'
+		#
+		render xlsx: "aldi_log", disposition: 'inline'
   end
 
 	def stats
