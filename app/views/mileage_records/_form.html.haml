@@ -43,11 +43,11 @@
         .small-6.columns
           .field        
             = f.label :start_mileage, "Start Mileage"
-            = f.number_field :start_mileage, :placeholder => "Enter Start Mileage"
+            = f.number_field :start_mileage, :placeholder => "Enter Start Mileage", :pattern => "[0-9]*"
         .small-6.columns
           .field        
             = f.label :end_mileage, "End Mileage"
-            = f.number_field :end_mileage, :placeholder => "Enter End Mileage i.e. 34,269"
+            = f.number_field :end_mileage, :placeholder => "Enter End Mileage i.e. 34,269", :pattern => "[0-9]*"
       .row
         .buttons
           .small-6.columns

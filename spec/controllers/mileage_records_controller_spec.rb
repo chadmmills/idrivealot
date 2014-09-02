@@ -75,7 +75,6 @@ describe MileageRecordsController do
 				mr = create(:mileage_record, user: user)
 				sign_in user
 				post :download_month, "date" => { "month" => Date.today.month, "year" => Date.today.year }
-				puts response.body.inspect
 				expect(response.headers['Content-Type']).to have_content 'openxml'
 			end
 		end
