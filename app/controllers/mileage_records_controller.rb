@@ -1,7 +1,7 @@
 class MileageRecordsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_mileage_record, only: [:show, :edit, :update, :destroy]
-  before_action :set_routes_select_data, only: [:create, :new, :edit, :index, :update]
+  before_action :set_form_select_data, only: [:create, :new, :edit, :index, :update]
 	before_action :set_route_description, only: [:create, :update]
 
   # GET /mileage-records
@@ -9,7 +9,6 @@ class MileageRecordsController < ApplicationController
     @mileage_record = current_user.mileage_records.last || current_user.mileage_records.new
     respond_to do |f|
       f.html { render "table_index" }
-    #  f.csv { send_data @mileage_records.to_csv(current_user), type: 'text/csv; charset=utf-8; header=present' }
       f.xlsx { send_data @mileage_records.to_xlsx.to_stream.read, :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet" }
     end
   end
@@ -17,21 +16,18 @@ class MileageRecordsController < ApplicationController
 	def list_view
     @mileage_records = current_user.mileage_records.order("record_date DESC, end_mileage DESC")
 	end
-  # GET /mileage_records/1
+
   def show
   end
 
-  # GET /mileage_records/new
   def new
     @mileage_record = current_user.mileage_records.new
     @mileage_record.start_mileage = MileageRecord.last_end_mileage_for(current_user)
   end
 
-  # GET /mileage_records/1/edit
   def edit
   end
 
-  # POST /mileage_records
   def create
     @mileage_record = current_user.mileage_records.new(mileage_record_params)
       if @mileage_record.save
@@ -41,17 +37,14 @@ class MileageRecordsController < ApplicationController
       end
   end
 
-  # PATCH/PUT /mileage_records/1
-  # PATCH/PUT /mileage_records/1.json
   def update
     if @mileage_record.update(mileage_record_params)
       redirect_to mileage_records_url, notice: 'Mileage record was successfully updated.'
     else
-    render action: 'edit'
+			render action: 'edit'
     end
   end
 
-  # DELETE /mileage_records/1
   def destroy
     @mileage_record.destroy
     respond_to do |format|
@@ -83,8 +76,9 @@ class MileageRecordsController < ApplicationController
       @mileage_record = current_user.mileage_records.find(params[:id])
     end
 
-    def set_routes_select_data
+    def set_form_select_data
       @routes = MileageRecord.where(user: current_user).uniq.pluck(:route_description)
+			@dates = (1.month.ago.to_date..30.days.from_now).map{ |date| [date.strftime("%A, %b-%d"), date] }
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

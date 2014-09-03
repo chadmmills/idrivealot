@@ -28,8 +28,7 @@
               %li.error-message
                 = msg
       .field        
-        - mileage_dates = (1.month.ago.to_date..30.days.from_now).map{ |date| [date.strftime("%A, %b-%d"), date] }
-        = f.select :record_date, options_for_select(mileage_dates, Date.today)
+        = f.select :record_date, options_for_select(@dates, Date.today)
       .field        
         = f.label :route_description, "Destination"
         - if @mileage_record.route_description
