@@ -9,7 +9,7 @@ MileageTracker::Application.routes.draw do
 	end
 
 
-  resources :mileage_records, :path => "mileage-records" do
+  resources :mileage_records, :path => "" do
 		collection do
 			get 'list-view' => 'mileage_records#list_view'
 			get 'stats' => 'mileage_records#stats'
