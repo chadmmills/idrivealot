@@ -1,2 +1,9 @@
-= render 'tabs'
-= render 'form'
+- if @mileage_record.persisted?
+  = render 'tabs'
+  = render 'form'
+- else
+  .row
+    .small-12.medium-4.columns
+      %h5 Looks like you haven't added any entries yet
+      %p Click the button below to add your first entry
+      = link_to "ADD YOUR FIRST ENTRY", new_mileage_record_path, class: "btn new-button"

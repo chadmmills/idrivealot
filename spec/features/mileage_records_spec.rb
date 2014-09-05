@@ -1,9 +1,17 @@
 require 'spec_helper'
 
 feature "User" do
+	scenario "will be asked to add their first entry on signup" do
+		user = create(:user)
+		signin user
+		expect(page).to have_text "ADD YOUR FIRST ENTRY"
+		expect(page).to_not have_text "SAVE"
+	end
+
 	scenario "can save a new mileage record" do
 		user = create(:user, email: 'ugh@example.com')
 		signin user
+		click_link "ADD YOUR FIRST ENTRY"
 		fill_in 'new_route_description', with: "Store 89"
 		fill_in 'Start Mileage', with: 1
 		fill_in 'End Mileage', with: 23
