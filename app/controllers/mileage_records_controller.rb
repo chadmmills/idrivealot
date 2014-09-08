@@ -31,7 +31,7 @@ class MileageRecordsController < ApplicationController
   def create
     @mileage_record = current_user.mileage_records.new(mileage_record_params)
       if @mileage_record.save
-        redirect_to mileage_records_path, notice: 'Mileage record was successfully created.'
+				send_to_root_or_next
       else
         render action: 'new'
       end
@@ -89,4 +89,12 @@ class MileageRecordsController < ApplicationController
     def set_route_description
       params[:mileage_record][:route_description] = params[:new_route_description] unless params[:new_route_description].blank?
     end
+
+		def send_to_root_or_next
+			if params[:path] == "Next"
+				redirect_to new_mileage_record_path, notice: 'Mileage record was successfully created.'
+			else
+        redirect_to mileage_records_path, notice: 'Mileage record was successfully created.'
+			end
+		end
 end

@@ -12,24 +12,27 @@ require 'spec_helper'
     #   t.timestamps
 
 describe MileageRecord do
-	it "has an invalid date" do
-  	expect(build(:mileage_record, record_date: nil)).to have(1).errors_on(:record_date)
+	it "properly sets the date" do
+		#with default value of Date.today, shouldn't be nil
+		#Instead should properly save mileage
+		mileage_entry = build(:mileage_record, record_date: Date.today - 5.days)
+		expect(mileage_entry.record_date).to eq(Date.today - 5.days)
   end
 
   it " has an invalid route" do
-  	expect(build(:mileage_record, route_description: nil)).to have(1).errors_on(:route_description)
+		expect(build(:mileage_record, route_description: nil)).to have(1).errors_on(:route_description)
   end
 
   it "has an invalid mileage value" do
-  	expect(build(:mileage_record, start_mileage: 1.34)).to have(1).errors_on(:start_mileage)
+		expect(build(:mileage_record, start_mileage: 1.34)).to have(1).errors_on(:start_mileage)
   end
 
   it "has a valid mileage value" do
-  	expect(build(:mileage_record, start_mileage: 1024)).to have(0).errors_on(:start_mileage)
+		expect(build(:mileage_record, start_mileage: 1024)).to have(0).errors_on(:start_mileage)
   end
 
   it "has an invalid mileage value" do
-  	expect(build(:mileage_record, end_mileage: 1.024)).to have(1).errors_on(:end_mileage)
+		expect(build(:mileage_record, end_mileage: 1.024)).to have(1).errors_on(:end_mileage)
   end
 
 	it "is allowed to have nil mileage" do
@@ -38,6 +41,10 @@ describe MileageRecord do
 
 	it "is allowed to have nil end mileage" do
 		expect(build(:mileage_record, end_mileage: nil, start_mileage: 90)).to be_valid
+	end
+
+	it "has a default record_date value" do
+		expect(MileageRecord.new.record_date).to_not be_nil
 	end
 
   it "is a valid record" do

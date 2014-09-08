@@ -18,12 +18,23 @@ feature "User" do
 		click_button 'Save'
 		expect(page).to have_content "Last Saved:"
 		expect(page).to have_content "Store 89"
-	end	
+	end
+
+	scenario "can save a record and go to next" do
+		user = create(:user, email: 'ugh@example.com')
+		signin user
+		visit new_mileage_record_path
+		fill_in 'new_route_description', with: "Store 89"
+		fill_in 'Start Mileage', with: 1
+		fill_in 'End Mileage', with: 23
+		click_button 'Next'
+		expect(page).to have_content "New Entry"
+	end
 
 	scenario "can update an existing record" do
 		user = create(:user, email: 'update@exmaple.com')
 		existing_mileage_record = create(:mileage_record, user: user)
-		signin user	
+		signin user
 		fill_in 'new_route_description', with: "JK Store 92"
 		click_button "Save"
 		expect(page).to have_content "JK Store 92"
@@ -33,7 +44,7 @@ feature "User" do
 		user = create(:user, email: 'update@exmaple.com')
 		mileage_record_1 = create(:mileage_record, user: user)
 		mileage_record_2 = create(:mileage_record, user: user)
-		signin user	
+		signin user
 		click_link "List"
 		expect(page).to have_content mileage_record_1.route_description
 		expect(page).to have_content mileage_record_2.route_description
@@ -42,7 +53,7 @@ feature "User" do
 
 	scenario "can update their login information" do
 		user = create(:user, email: 'update@exmaple.com')
-		signin user	
+		signin user
 		click_link "Edit Profile"
 		fill_in 'Email', with: 'newemail@example.com'
 		fill_in 'Current password', with: user.password

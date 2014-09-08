@@ -27,24 +27,24 @@
             - @mileage_record.errors.full_messages.each do |msg|
               %li.error-message
                 = msg
-      .field        
-        = f.select :record_date, options_for_select(@dates, Date.today)
-      .field        
+      .field
+        = f.select :record_date, @dates
+      .field
         = f.label :route_description, "Destination"
         - if @mileage_record.route_description
           = text_field_tag :new_route_description, @mileage_record.route_description
         - else
           = text_field_tag :new_route_description, nil, placeholder: "Enter New Route"
-      .field        
+      .field
         = label_tag 'mileage_record_route_description', "- Or Select Previous Route -", class: "tc"
         = select("mileage_record", "route_description", @routes, {include_blank: "Select Route"} )
       .row
         .small-6.columns
-          .field        
+          .field
             = f.label :start_mileage, "Start Mileage"
             = f.number_field :start_mileage, :placeholder => "Enter Start Mileage", :pattern => "[0-9]*"
         .small-6.columns
-          .field        
+          .field
             = f.label :end_mileage, "End Mileage"
             = f.number_field :end_mileage, :placeholder => "Enter End Mileage i.e. 34,269", :pattern => "[0-9]*"
       .row
@@ -52,4 +52,8 @@
           .small-6.columns
             = f.submit "Save", :class => "btn button button-blue save-button"
           .small-6.columns
-            = link_to "New", new_mileage_record_path, class: "btn new-button"
+            - if current_page?(new_mileage_record_path)
+              = f.submit "Next", name: "path", value: "Next", class: "btn new-button"
+            - else
+              = link_to "New", new_mileage_record_path, class: "btn new-button"
+

@@ -21,6 +21,10 @@ class MileageRecord < ActiveRecord::Base
 
   before_save :set_distance
 
+	def record_date
+		self[:record_date] || Date.today
+	end
+
   public
     def self.last_end_mileage_for(user)
       if MileageRecord.where(user_id: user).count < 1
