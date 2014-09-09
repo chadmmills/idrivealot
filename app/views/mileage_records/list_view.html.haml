@@ -1,9 +1,16 @@
 = render 'tabs'
--  @mileage_records.each do |m|
-  .list-row
-    %span
-      = m.record_date.strftime("%m/%d")
-    %span
-      = m.route_description
-    %span
-      = m.end_mileage
+%table.list
+  %thead
+    %tr
+      %th Date
+      %th Route
+      %th Mileage
+  %tbody
+    -  @mileage_records.each do |m|
+      %tr
+        %td
+          = m.record_date.strftime("%m/%d")
+        %td
+          = m.route_description
+        %td
+          = m.end_mileage
