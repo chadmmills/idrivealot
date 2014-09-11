@@ -1,3 +1,5 @@
 = ida
 
-More to come...
+==== SUPER simple way to track your mileage
+
+==== No GPS, No Map, No times - Just Mileage
