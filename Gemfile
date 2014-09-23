@@ -51,6 +51,7 @@ gem 'capistrano-rbenv'
 
 group :development do
 	gem 'guard-livereload', require: false
+  gem "spring-commands-rspec"
 end
 
 gem 'pg'

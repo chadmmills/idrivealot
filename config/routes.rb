@@ -8,6 +8,8 @@ MileageTracker::Application.routes.draw do
 		delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
 	end
 
+  get 'download' => 'mileage_records#download', as: :download_data
+  post 'download/month' => 'mileage_records#download_month'
 
   resources :mileage_records, :path => "" do
 		collection do
@@ -17,7 +19,5 @@ MileageTracker::Application.routes.draw do
 	end
 
   root 'mileage_records#index'
-  get 'download' => 'mileage_records#download', as: :download_data
-  post 'download/month' => 'mileage_records#download_month'
 
 end

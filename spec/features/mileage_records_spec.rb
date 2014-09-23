@@ -69,6 +69,15 @@ feature "User" do
 		click_link "Stats"
 		expect(page).to have_content "410"
 	end
+
+  scenario "can download existing records" do
+		user = create(:user, email: 'update@exmaple.com')
+		ml = create(:mileage_record, user: user, end_mileage: 200)
+		ml2 = create(:mileage_record, user: user, start_mileage: 200, end_mileage: 410)
+		signin user
+		click_link "Download"
+    expect(page).to have_content "Download"
+  end
 end
 
 def signin user
