@@ -60,9 +60,8 @@ class MileageRecordsController < ApplicationController
   def download_month
     month_value = params.require(:date).permit(:month, :year)
     search_date = Date.strptime("#{month_value[:year]}-#{month_value[:month]}-1", '%Y-%m-%d')
-    @download_data = current_user.mileage_records.order(:record_date).all #.where("record_date <= ? AND record_date > ?", search_date.end_of_month, search_date-1)
-    #send_data @download_data.inspect, filename: "#{search_date} Mileage.xlsx", :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet", disposition: 'inline'
-		#
+    @download_data = current_user.mileage_records.order(:record_date).where("record_date <= ? AND record_date > ?", search_date.end_of_month, search_date-1)
+    
 		render xlsx: "aldi_log", disposition: 'inline'
   end
 

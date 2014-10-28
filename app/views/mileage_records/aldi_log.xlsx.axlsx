@@ -1,18 +1,22 @@
 wb = xlsx_package.workbook
 wb.add_worksheet(name: "Log") do |s|
+
 	s.add_row ["Mileage Log"]
 	s.add_row []
 	s.add_row ["Name", current_user.email.split('@').first]
 	s.add_row []
 	s.add_row ["Date","Business Purpose"]
-	@download_data.last.record_date.end_of_month.day.times do |i|
-		@download_data.each do |d|
-			if d.record_date.day == i 
-				s.add_row [i, d.route_description]
-			else
-				s.add_row [i+1]
-				break
-			end
-		end
-	end
+
+  unless @download_data.empty?
+    @download_data.last.record_date.end_of_month.day.times do |i|
+      @download_data.each do |d|
+        if d.record_date.day == i 
+          s.add_row [i, d.route_description]
+        else
+          s.add_row [i+1]
+          break
+        end
+      end
+    end
+  end
 end
