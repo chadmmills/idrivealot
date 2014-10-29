@@ -1,5 +1,6 @@
 MileageTracker::Application.routes.draw do
 
+  get 'home', controller: 'home'
 	devise_for :users, :skip => [:sessions]
 
 	as :user do
@@ -11,13 +12,13 @@ MileageTracker::Application.routes.draw do
   get 'download' => 'mileage_records#download', as: :download_data
   post 'download/month' => 'mileage_records#download_month'
 
-  resources :mileage_records, :path => "" do
+  resources :mileage_records, :path => "records" do
 		collection do
 			get 'list-view' => 'mileage_records#list_view'
 			get 'stats' => 'mileage_records#stats'
 		end
 	end
 
-  root 'mileage_records#index'
+  root to: redirect('/home/')
 
 end
