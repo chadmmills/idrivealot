@@ -5,4 +5,23 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :mileage_records
+
+  attr_accessor :stripe_card_token
+
+  validates :customer_id, presence: true
+
+  def save_with_payment
+    if email
+      customer = Stripe::Customer.create(description: email,
+                                         plan: "idrivealot_monthly",
+                                         card: stripe_card_token)
+      self.customer_id = customer.id
+      save! if valid?
+    end
+  rescue Stripe::InvalidRequestError => e
+    logger.error "Stripe error while creating customer: #{e.message}"
+    errors.add :base, "There was a problem with your credit card."
+    false
+  end
+
 end

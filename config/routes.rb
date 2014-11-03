@@ -1,7 +1,7 @@
 MileageTracker::Application.routes.draw do
 
   get 'home', controller: 'home'
-	devise_for :users, :skip => [:sessions]
+	devise_for :users, :skip => [:sessions], :controllers => {:registrations => "users"}
 
 	as :user do
 		get 'login' => 'devise/sessions#new', :as => :new_user_session
