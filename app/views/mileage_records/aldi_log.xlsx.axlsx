@@ -5,18 +5,21 @@ wb.add_worksheet(name: "Log") do |s|
 	s.add_row []
 	s.add_row ["Name", current_user.email.split('@').first]
 	s.add_row []
-	s.add_row ["Date","Business Purpose"]
+	s.add_row ["Date","Business Purpose","Start Mileage","End Mileage"]
 
   unless @download_data.empty?
     @download_data.last.record_date.end_of_month.day.times do |i|
-      @download_data.each do |d|
-        if d.record_date.day == i 
-          s.add_row [i, d.route_description]
-        else
-          s.add_row [i+1]
-          break
+      day_index = i + 1
+      data = @download_data.to_a.select {|d| d.record_date.day == day_index}
+      if data.empty?
+        s.add_row [day_index]
+      else
+        data.each do |d|
+          s.add_row [day_index, d.route_description, d.start_mileage, d.end_mileage]
         end
       end
     end
   end
 end
+
+wb.use_shared_strings = true
