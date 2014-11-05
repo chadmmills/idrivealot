@@ -13,7 +13,7 @@
     = label_tag 'download_all_data', " - OR -", class: 'tc'
 .row
   .medium-8.medium-centered.large-6.large-centered.columns.buttons
-    = link_to "Download All Data", mileage_records_path(:format => :xlsx), :class => "btn new-button download-all tc"
+    = link_to "Download All Data", download_data_path(:format => :xlsx), :class => "btn new-button download-all tc"
 .row
   .medium-8.medium-centered.large-6.large-centered.columns
     = link_to "Home", root_path

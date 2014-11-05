@@ -1,0 +1,10 @@
+workbook = xlsx_package.workbook
+
+workbook.add_worksheet(name: "Log") do |sheet|
+  sheet.add_row ["Date","Route","Start","End"]
+  @records.each do |r|
+    sheet.add_row [r.record_date, r.route_description, r.start_mileage, r.end_mileage]
+  end
+end
+
+workbook.use_shared_strings = true

@@ -54,7 +54,11 @@ class MileageRecordsController < ApplicationController
   end
 
   def download
-		#If respond_to format is xlsx send all data else render download template
+    @records = current_user.mileage_records.order(:record_date)
+    respond_to do |f|
+      f.html { render 'download' }
+      f.xlsx { render xlsx: "data_dump", disposition: "inline", filename: "My idrivealot data" }
+    end
   end
 
   def download_month
@@ -62,7 +66,7 @@ class MileageRecordsController < ApplicationController
     search_date = Date.strptime("#{month_value[:year]}-#{month_value[:month]}-1", '%Y-%m-%d')
     @download_data = current_user.mileage_records.order(:record_date).where("record_date <= ? AND record_date > ?", search_date.end_of_month, search_date-1)
     
-		render xlsx: "aldi_log", disposition: 'inline'
+		render xlsx: "aldi_log", disposition: 'inline', filename: "#{search_date.strftime('%B')}_log"
   end
 
 	def stats
