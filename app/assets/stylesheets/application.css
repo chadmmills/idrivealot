@@ -11,5 +11,6 @@
  *= require_self
  *= require normalize
  *= require foundation
+ *= require foundation_switches
  *= require_tree .
  */

@@ -62,11 +62,16 @@ class MileageRecordsController < ApplicationController
   end
 
   def download_month
-    month_value = params.require(:date).permit(:month, :year)
-    search_date = Date.strptime("#{month_value[:year]}-#{month_value[:month]}-1", '%Y-%m-%d')
-    @download_data = current_user.mileage_records.order(:record_date).where("record_date <= ? AND record_date > ?", search_date.end_of_month, search_date-1)
-    
-		render xlsx: "aldi_log", disposition: 'inline', filename: "#{search_date.strftime('%B')}_log"
+    @download_data = current_user.mileage_records.order(:record_date)
+                      .where("record_date <= ? AND record_date > ?", search_date.end_of_month, search_date-1)
+
+    if email_flag
+      DataMailer.monthly_data(current_user.id, search_date_month, @download_data).deliver
+      flash[:notice] = "Email Sent!"
+      redirect_to download_data_path and return
+    else
+      render xlsx: "aldi_log", disposition: 'inline', filename: "#{search_date_month}_log"
+    end
   end
 
 	def stats
@@ -74,7 +79,22 @@ class MileageRecordsController < ApplicationController
 	end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    def search_date_month
+      search_date.strftime('%B')
+    end
+
+    def email_flag
+      params[:email_flag]
+    end
+
+    def month_value
+      params.require(:date).permit(:month, :year)
+    end
+
+    def search_date
+      Date.strptime("#{month_value[:year]}-#{month_value[:month]}-1", '%Y-%m-%d')
+    end
+
     def set_mileage_record
       @mileage_record = current_user.mileage_records.find(params[:id])
     end

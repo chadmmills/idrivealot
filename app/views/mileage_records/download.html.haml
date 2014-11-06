@@ -1,19 +1,35 @@
 .row
-  .medium-8.medium-centered.large-6.large-centered.columns
+  .large-12.large-centered.columns.text-center
+    %h4.tc Monthly Report
+
+.row
+  .small-12.large-12.large-centered.columns
     = form_tag("/download/month", method: "post") do
-      = label_tag(:selected_month, "Select Month")
+      .row
+        .small-8.columns
+          = label_tag(:selected_month, "Select Month")
+        .small-4.columns
+          = label_tag(:selected_month, "Year")
       .row
         .small-8.columns
           = select_month(Date.today)
         .small-4.columns
           = select_year(Date.today)
+      .row
+        .small-4.columns
+          .switch.radius
+            = check_box_tag :email_delivery
+            = label_tag :email_delivery
+        .small-8.columns
+          Send Report to Email?
       = submit_tag("Download Excel File", :class => "btn button button-blue save-button")
 .row
-  .medium-8.medium-centered.large-6.large-centered.columns.text-center
-    = label_tag 'download_all_data', " - OR -", class: 'tc'
+  .large-12.large-centered.columns.text-center
+    %h4.tc - OR -
 .row
-  .medium-8.medium-centered.large-6.large-centered.columns.buttons
+  .large-12.large-centered.columns.buttons
     = link_to "Download All Data", download_data_path(:format => :xlsx), :class => "btn new-button download-all tc"
 .row
-  .medium-8.medium-centered.large-6.large-centered.columns
+  .large-12.large-centered.columns.buttons
+    %br
     = link_to "Home", root_path

@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.5'
-gem 'skylight'
 gem 'axlsx_rails'
 gem 'html2haml'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 group :production do
   gem 'rails_12factor'
   gem 'unicorn'
+  gem 'skylight'
 end
 
 gem 'sass-rails', '~> 4.0.0'
