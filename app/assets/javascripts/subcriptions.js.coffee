@@ -1,4 +1,5 @@
 jQuery ->
+  new FastClick(document.body)
   Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))
   subscription.setupForm()
   console.log("Form is set up for stripe")

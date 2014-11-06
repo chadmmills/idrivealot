@@ -4,6 +4,7 @@ gem 'rails', '4.1.5'
 gem 'axlsx_rails'
 gem 'html2haml'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'fastclick-rails'
 group :production do
   gem 'rails_12factor'
   gem 'unicorn'

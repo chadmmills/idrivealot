@@ -106,6 +106,7 @@ GEM
       railties (>= 3.0.0)
     faker (1.4.3)
       i18n (~> 0.5)
+    fastclick-rails (1.0.1)
     ffi (1.9.6)
     formatador (0.2.5)
     guard (2.7.0)
@@ -311,6 +312,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   faker
+  fastclick-rails
   guard-livereload
   haml
   haml-rails
