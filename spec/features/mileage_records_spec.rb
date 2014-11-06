@@ -78,6 +78,21 @@ feature "User" do
 		click_link "Download"
     expect(page).to have_content "Download"
   end
+
+  scenario "can send data report in email" do
+		user = create(:user, email: 'update@exmaple.com')
+		ml = create(:mileage_record, user: user, end_mileage: 200, record_date: Date.yesterday)
+		ml2 = create(:mileage_record, user: user, start_mileage: 200, end_mileage: 410, record_date: Date.today)
+		signin user
+		click_link "Download"
+    
+    select Date.today.strftime('%B'), from: "date_month"
+    check "email_flag"
+    click_button "Download Excel File"
+
+    expect(page).to have_content "Email Sent!"
+  end
+
 end
 
 def signin user
