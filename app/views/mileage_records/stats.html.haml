@@ -9,6 +9,6 @@
 .stats-wrapper
   .stat-circle
     .stat-number
-      = @mileage_entries.sum(:distance)
+      = number_with_delimiter(@mileage_entries.sum(:distance))
     .stat-label
       Miles Driven
