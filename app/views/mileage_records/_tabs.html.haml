@@ -2,9 +2,11 @@
   .small-12.columns
     .tabs
       = link_to  mileage_records_path, class: "tab-link tab-link-index" do
+        %i.fa.fa-home
+        Home
+      = link_to  new_mileage_record_path, class: "tab-link tab-link-new" do
         %i.fa.fa-plus
-        %br
-        Form
+        New
       = link_to list_view_mileage_records_path, class: "tab-link tab-link-list" do
         %i.fa.fa-list-ul
         %br

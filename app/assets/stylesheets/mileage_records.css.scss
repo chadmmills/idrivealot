@@ -58,7 +58,7 @@ header {
 			background-color: darken(#C0E0DD, 15%);
 		}
 	}
-	
+
 	a {
 		color:white;
 		text-decoration: none;
@@ -72,6 +72,10 @@ header {
 	@media screen and (max-width: 500px){
 		margin: 20px;
 	}
+}
+
+.list_view .container {
+  margin: 10px;
 }
 
 ul {
@@ -146,15 +150,15 @@ $lightGrey: '#A2A9A8';
 }
 
 :-moz-placeholder { /* Firefox 18- */
-	color: $lightGrey;  
+	color: $lightGrey;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-	color: $lightGrey;  
+	color: $lightGrey;
 }
 
-:-ms-input-placeholder {  
-	color: $lightGrey;  
+:-ms-input-placeholder {
+	color: $lightGrey;
 }
 
 input[type=submit] {
@@ -220,13 +224,9 @@ select {
 	width: 100%;
 }
 
-.field {
-	margin-bottom: 15px;
-}
-
 
 .tabs {
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 	height: 70px;
 	border-radius: 3px;
 	max-width: 350px;
@@ -238,7 +238,7 @@ select {
 
 .tab-link {
 	display: inline-block;
-	width: 80px;
+	width: 60px;
 	text-align:center;
 	border-radius: 10px;
 	text-decoration: none;
@@ -246,6 +246,7 @@ select {
 	margin-top: 5px;
 	color: grey;
 	padding: 0px 10px 10px 10px;
+  font-size: 14px;
 }
 
 .tab-link:hover {
@@ -253,12 +254,18 @@ select {
 }
 
 .tab-link i {
-	padding-top: 15px;
+  font-size: 18px;
+	padding-top: 12px;
 	width: 100%;
 	text-align:center;
 }
 
 .index .tab-link-index {
+	background-color: darken(#C0E0DD, 25%);
+	color: white;
+}
+
+.new .tab-link-new {
 	background-color: darken(#C0E0DD, 25%);
 	color: white;
 }
@@ -306,6 +313,7 @@ select {
 
 }
 
+
 /****** List View *****/
 .list {
 	table-layout: fixed;
@@ -331,6 +339,10 @@ select {
 	color: white;
 }
 
-.list th:nth-child(1) {width: 25%}
+.list th:nth-child(1) {width: 20%}
 .list th:nth-child(2) {width: 45%}
-	
+.list th:nth-child(3) {width: 25%}
+
+.edit-record {
+  color: #787F7C;
+}

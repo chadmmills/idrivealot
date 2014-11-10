@@ -49,11 +49,8 @@
             = f.number_field :end_mileage, :placeholder => "Enter End Mileage i.e. 34,269", :pattern => "[0-9]*"
       .row
         .buttons
-          .small-6.columns
+          .small-12.columns
             = f.submit "Save", :class => "btn button button-blue save-button"
-          .small-6.columns
+          .small-12.columns
             - if current_page?(new_mileage_record_path)
               = f.submit "Next", name: "redirect_path", class: "btn new-button"
-            - else
-              = link_to "New", new_mileage_record_path, class: "btn new-button"
-

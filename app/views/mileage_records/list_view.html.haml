@@ -5,6 +5,7 @@
       %th Date
       %th Route
       %th Mileage
+      %th
   %tbody
     -  @mileage_records.each do |m|
       %tr
@@ -14,3 +15,6 @@
           = m.route_description
         %td
           = m.end_mileage
+        %td
+          = link_to edit_mileage_record_path(m) do
+            <i class="fa fa-edit edit-record"></i>
