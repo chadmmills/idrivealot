@@ -1,0 +1,18 @@
+%h2.tc IDriveAlot Users
+
+%table.admin-users-table
+  %thead
+    %tr
+      %th ID
+      %th Email
+      %th Sign In Count
+      %th Last Sign In
+      %th Customer Token
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.id
+        %td= user.email
+        %td= user.sign_in_count
+        %td= user.last_sign_in_at
+        %td= user.customer_id

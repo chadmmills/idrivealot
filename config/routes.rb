@@ -1,5 +1,6 @@
 MileageTracker::Application.routes.draw do
 
+  devise_for :admins
   get 'home', controller: 'home'
 	devise_for :users, :skip => [:sessions], :controllers => {:registrations => "users"}
 
@@ -8,6 +9,10 @@ MileageTracker::Application.routes.draw do
 		post 'login' => 'devise/sessions#create', :as => :user_session
 		delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
 	end
+
+  namespace :admin do
+    resources :users
+  end
 
   get 'download' => 'mileage_records#download', as: :download_data
   post 'download/month' => 'mileage_records#download_month'
