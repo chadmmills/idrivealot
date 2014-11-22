@@ -1,9 +1,21 @@
+$tablet: "only screen and (max-width : 900px)";
+$phone: "only screen and (max-width : 460px)";
+$button-grey: #A69C9A;
+$text-grey: #A8A69A;
+$dark-brown: #4E3733;
+$wild-red: #CE5E55;
+$header-dark: #585355;
+
 .alert {
 	border-radius: 10px;
 	margin-bottom: 30px;
 	font-size: 14px;
 	line-height: 40px;
 	min-height: 65px;
+}
+
+.alert ul {
+  padding-left: 20px;
 }
 
 .alert .close {
@@ -45,4 +57,9 @@
 .stripe-alert {
   line-height: 60px;
   text-align: center;
+}
+
+.flash-trash {
+  line-height: 1.6 !important;
+  color: $header-dark;
 }

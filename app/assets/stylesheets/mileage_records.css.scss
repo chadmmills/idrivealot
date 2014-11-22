@@ -5,7 +5,13 @@
 /*** Variables ***/
 
 $green: #6bb6af;
-
+$tablet: "only screen and (max-width : 900px)";
+$phone: "only screen and (max-width : 460px)";
+$button-grey: #A69C9A;
+$text-grey: #A8A69A;
+$dark-brown: #4E3733;
+$wild-red: #CE5E55;
+$header-dark: #585355;
 
 
 .tc {text-align: center}
@@ -22,7 +28,10 @@ body {
 }
 
 header {
-	background: darken(#C0E0DD, 25%);
+  //background: #73605C;
+  //background: lighten(#C1CDC1, 5%);
+//	background: darken(#73605C, 15%);
+  background: $header-dark;
 	width: 100%;
 	min-height: 50px;
 	margin-top: 0px;
@@ -55,7 +64,7 @@ header {
 			border-radius: 5px;
 		}
 		a:hover {
-			background-color: darken(#C0E0DD, 15%);
+			background-color: $button-grey;
 		}
 	}
 
@@ -73,6 +82,8 @@ header {
 		margin: 10px;
 	}
 }
+
+textarea, input { outline: none; }
 
 .admin-users .container {
   max-width: 1000px;
@@ -134,13 +145,35 @@ input[type=text], input[type=email], input[type=password], input[type=number] {
 	padding: 10px;
 	border: 1px solid lightgrey;
 	box-sizing: border-box;
-	border-radius: 10px;
+	border-radius: 5px;
 
+}
+
+.cvc {
+  text-align: right;
+  line-height: 50px;
+}
+.exp-date {
+  margin-top: 0px;
 }
 
 .remember-me div {
 	display: inline-block;
 }
+.remember-me div input {
+  height: 15px;
+}
+
+.devise-link {
+  display: inline-block;
+  background-color: $button-grey;
+  padding: 5px;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: white;
+}
+
 
 .remember-me div:nth-child(1) {
 	width: 20px;
@@ -190,7 +223,7 @@ select {
 }
 
 .btn {
-	border-radius: 10px;
+	border-radius: 5px;
 	color: #ffffff;
 	font-size: 18px;
 	padding: 10px;
@@ -221,11 +254,11 @@ select {
 	background-color: darken(#787F7C, 15%);
 }
 
-.save-button {
-	background-color: #6bb6af;
+.primary-button {
+	background-color: $wild-red;
 }
-.save-button:hover {
-	background-color: darken(#C0E0DD, 45%);
+.primary-button:hover {
+	background-color: darken($wild-red, 5%);
 }
 
 .download-all {

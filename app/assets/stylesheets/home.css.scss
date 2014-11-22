@@ -1,0 +1,127 @@
+$tablet: "only screen and (max-width : 900px)";
+$phone: "only screen and (max-width : 460px)";
+$button-grey: #A69C9A;
+$dark-brown: #4E3733;
+$text-grey: #A8A69A;
+
+.image-container {
+  background-image: image-url("road.jpg");
+  background-position: center center;
+  background-size: cover;
+  min-height: 500px;
+  width: 100%;
+
+  overflow: auto;
+
+  @media #{$tablet} {
+    min-height: 300px;
+  }
+
+  @media #{$phone} {
+    min-height: 220px;
+  }
+}
+
+.banner-title {
+  margin-top: 180px;
+  margin-bottom: 0px;
+  font-size: 90px;
+  color:white;
+
+  @media #{$tablet} {
+    font-size: 60px;
+    margin-top: 100px;
+  }
+
+  @media #{$phone} {
+    font-size: 40px;
+    margin-top: 70px;
+  }
+}
+
+.banner-links {
+  width: 300px;
+  margin: auto;
+  color: white;
+
+  @media #{$tablet} {
+    width: 240px;
+  }
+}
+
+.banner-links span {
+  display: inline;
+  padding: 5px;
+  text-align: center;
+  font-size: 1.4em;
+
+  @media #{$tablet} {
+    font-size: 1.1em;
+  }
+
+  @media #{$phone} {
+    display: none;
+  }
+}
+.banner-links span.link {
+    @media #{$phone} {
+      display: block;
+      width: 160px;
+      background-color: $button-grey;
+      padding: 5px;
+      border-radius: 3px;
+      margin: auto;
+      margin-bottom: 5px;
+  }
+}
+
+.banner-links span a {
+  text-decoration: none;
+  color: white;
+}
+.banner-links a:hover {
+  text-decoration: underline;
+}
+
+
+.title-pitch {
+  color: $dark-brown;
+  font-size: 2em;
+
+  @media #{$tablet} {
+    font-size: 1.7em;
+  }
+
+  @media #{$phone} {
+    font-size: 1.2em;
+  }
+}
+
+.title-pricing {
+  color: $text-grey;
+  font-size: 1.5em;
+
+  @media #{$phone} {
+    font-size: 1.2em;
+  }
+}
+
+.features-title {
+  color: $dark-brown;
+  font-size: 1.5em;
+  margin: 10px;
+
+  @media #{$phone} {
+    font-size: 1.2em;
+  }
+}
+.features-ul {
+  padding: 0px;
+}
+
+.features-ul li {
+  color: $text-grey;
+}
+.features-ul li:before {
+  content: "\2713\0020";
+}

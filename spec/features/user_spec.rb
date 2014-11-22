@@ -6,7 +6,6 @@ feature "User" do
     visit new_user_registration_path
     fill_in "Email", with: "email@example.com"
     fill_in "Password", with: "password123"
-    fill_in "Password Confirmation", with: "password123"
 
     #save_and_open_page
     fill_in "card_number", with: "4242424242424242"

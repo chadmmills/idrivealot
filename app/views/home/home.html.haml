@@ -1,7 +1,28 @@
+.image-container
+  %h1.banner-title.tc
+    idrivealot.com
+  .banner-links
+    %span.link= link_to "Sign up now", new_user_registration_path
+    %span
+      |
+    %span= link_to "Log in", new_user_session_path
 .row
   .small-12.columns
-    %h3.tc
-      Welcome to idrivealot!
+    %h2.tc.title-pitch
+      A Simple Way to Log Your Mileage
+    %h4.tc.title-pricing
+      For Only $2 / Month
 .row
   .small-12.columns
-    = link_to "Only $2 Per Month. Sign Up!", new_user_registration_path, class: "btn button save-button"
+    .row
+      .columns.small-12.medium-6
+        %h5.features-title Features
+        %ul.features-ul
+          %li Log Start & End Mileage
+          %li Quickly Choose Previous Routes
+          %li Mobile View (Just like an App!)
+          %li Always Backed Up in the Cloud
+          %li Email Monthly Reports
+          %li Hurray for No Pen & Paper!
+      .columns.small-12.medium-6
+

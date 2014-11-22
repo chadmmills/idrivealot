@@ -1,3 +1,6 @@
+.row
+  .small-12.columns
+    %h3 Log In
 = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
   %div
     = f.email_field :email, :autofocus => true, placeholder: "Email"
@@ -7,5 +10,5 @@
     %div.remember-me
       %div= f.check_box :remember_me
       %div= f.label :remember_me, :class => "il"
-  %div= f.submit "Login", :class => "btn button button-blue save-button"
+  %div= f.submit "Login", :class => "btn primary-button"
 = render "devise/shared/links"

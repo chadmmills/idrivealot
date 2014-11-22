@@ -1,7 +1,8 @@
 require 'spec_helper'
 
-feature "An Admin manages users" do
-  scenario "can see a list of users" do
+feature "An Admin" do
+  context "while signed in" do
+    scenario "can see a list of users" do
     admin = create(:admin)
     visit new_admin_session_path
 
@@ -11,6 +12,6 @@ feature "An Admin manages users" do
 
     expect(page).to have_content "Users"
 
-
+    end
   end
 end
