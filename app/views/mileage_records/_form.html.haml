@@ -1,19 +1,19 @@
 - if @mileage_record.persisted?
   .row
     .small-12.columns
+      %h3.form-heading
+        Current Entry
+  .row
+    .small-12.columns
       %span.save-notice
         %span.label
           Last Saved:
         %span.time
-          = @mileage_record.updated_at.strftime("%A %B #{@mileage_record.updated_at.day.ordinalize}")
-  .row
-    .small-12.columns
-      %h3
-        Current Entry
+          = local_time_ago(@mileage_record.updated_at)
 - else
   .row
     .small-12.columns
-      %h3
+      %h3.form-heading
         New Entry
 
 .row
@@ -50,7 +50,8 @@
       .row
         .buttons
           .small-12.columns
-            = f.submit "Save", :class => "btn button button-blue save-button"
+            = f.submit "Save", :class => "btn primary-button"
           .small-12.columns
             - if current_page?(new_mileage_record_path)
-              = f.submit "Next", name: "redirect_path", class: "btn new-button"
+              .tc - OR -
+              = f.submit "Save & Add New", name: "redirect_path", class: "btn new-button"

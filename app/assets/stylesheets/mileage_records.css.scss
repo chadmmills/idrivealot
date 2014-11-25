@@ -11,6 +11,7 @@ $button-grey: #A69C9A;
 $text-grey: #A8A69A;
 $dark-brown: #4E3733;
 $wild-red: #CE5E55;
+$cool-blue: #99D5D6;
 $header-dark: #585355;
 
 
@@ -235,6 +236,12 @@ select {
 	text-decoration: none;
 }
 
+.form-heading {
+	@media screen and (max-width: 500px){
+    margin: 0px 0px 10px 0px;
+  }
+}
+
 .buttons {
 
 	.btn {
@@ -247,6 +254,7 @@ select {
 }
 
 .new-button {
+  margin-top: 20px;
 	background-color: #787F7C;
 }
 
@@ -302,32 +310,35 @@ select {
 	text-align:center;
 }
 
-.index .tab-link-index {
-	background-color: darken(#C0E0DD, 25%);
+.active-tab {
+	background-color: $wild-red;
 	color: white;
+}
+.index .tab-link-index {
+  @extend .active-tab;
 }
 
 .new .tab-link-new {
-	background-color: darken(#C0E0DD, 25%);
-	color: white;
+  @extend .active-tab;
 }
 
 .list_view .tab-link-list {
-	background-color: darken(#C0E0DD, 25%);
-	color: white;
+  @extend .active-tab;
 }
 
 .stats .tab-link-stats {
-	background-color: darken(#C0E0DD, 25%);
-	color: white;
+  @extend .active-tab;
 }
 
 .save-notice {
+  display: block;
 	font-size: .8em;
+  margin-bottom: 15px;
 }
 
+
 .save-notice .time {
-	color: darken(#C0E0DD, 25%);
+	color: $cool-blue;
 }
 
 .stat-circle {
@@ -338,7 +349,7 @@ select {
 	margin-bottom: 30px;
 	margin-left: auto;
 	margin-right: auto;
-	background-color: #C0E0DD;
+	background-color: $cool-blue;
 }
 
 .stat-number {
@@ -380,7 +391,7 @@ select {
 	font-weight: normal;
 	border: 1px solid white;
 	padding: 10px 0px 10px 0px;
-	background-color: $green;
+	background-color: $cool-blue;
 	color: white;
 }
 
@@ -393,7 +404,5 @@ select {
 }
 
 .edit-record-link {
-	background-color: #C0E0DD;
   padding: 6px 6px 6px 9px;
-  border-radius: 5px;
 }

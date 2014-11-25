@@ -27,7 +27,7 @@ feature "User" do
 		fill_in 'new_route_description', with: "Store 89"
 		fill_in 'Start Mileage', with: 1
 		fill_in 'End Mileage', with: 23
-		click_button 'Next'
+		click_button 'Save & Add New'
 		expect(page).to have_content "New Entry"
 	end
 

@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require fastclick
+//= require local_time
 //= require_tree .
 //
 

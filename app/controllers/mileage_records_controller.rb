@@ -114,7 +114,7 @@ class MileageRecordsController < ApplicationController
     end
 
 		def send_to_root_or_next
-			if params[:redirect_path] == "Next"
+			if params[:redirect_path] == "Save & Add New"
 				redirect_to new_mileage_record_path, notice: 'Mileage record was successfully created.'
 			else
         redirect_to mileage_records_path, notice: 'Mileage record was successfully created.'
