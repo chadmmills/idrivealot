@@ -6,5 +6,6 @@ FactoryGirl.define do
     sequence(:customer_id) { |n| "ZSRF345KGMIEKSO#{n}" }
   	password "password"
   	password_confirmation "password"
+    active true
   end
 end

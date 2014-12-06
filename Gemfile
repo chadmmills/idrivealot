@@ -4,6 +4,7 @@ gem 'rails', '4.1.8'
 gem 'axlsx_rails'
 gem 'html2haml'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'stripe_event'
 gem 'fastclick-rails'
 gem 'local_time'
 group :production do

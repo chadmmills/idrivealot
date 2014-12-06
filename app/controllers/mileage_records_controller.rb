@@ -1,5 +1,6 @@
 class MileageRecordsController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_active_user!
   before_action :set_mileage_record, only: [:show, :edit, :update, :destroy]
   before_action :set_form_select_data, only: [:create, :new, :edit, :index, :update]
 	before_action :set_route_description, only: [:create, :update]
@@ -120,4 +121,11 @@ class MileageRecordsController < ApplicationController
         redirect_to mileage_records_path, notice: 'Mileage record was successfully created.'
 			end
 		end
+
+    def ensure_active_user!
+      unless current_user.active?
+        reset_session
+        redirect_to new_user_session_path, error: "Your account is locked due to invalid payment"
+      end
+    end
 end

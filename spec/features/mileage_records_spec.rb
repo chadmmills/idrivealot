@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature "User" do
 	scenario "will be asked to add their first entry on signup" do

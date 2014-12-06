@@ -1,7 +1,17 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe MileageRecordsController do
 
+  describe "Inactive User" do
+    context "GET #index" do
+      it "logs out the inactive user" do
+        user = create(:user, active: false)
+        sign_in user
+        get :index
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+  end
   describe "GET index" do
     login_user
     it "returns success on get index" do

@@ -17,7 +17,7 @@ describe User do
     let(:stripe_helper) { StripeMock.create_test_helper }
     before { StripeMock.start }
     after { StripeMock.stop }
-    
+
     it "#save_with_payment saves a Stripe Customer" do
       plan = stripe_helper.create_plan(:id => 'idrivealot_monthly', :amount => 200)
       stripe_user = build(:user)
