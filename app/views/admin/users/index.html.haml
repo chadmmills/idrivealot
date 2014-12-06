@@ -8,6 +8,7 @@
       %th Sign In Count
       %th Last Sign In
       %th Customer Token
+      %th Active
   %tbody
     - @users.each do |user|
       %tr
@@ -18,3 +19,4 @@
           = time_ago_in_words(user.last_sign_in_at)
           ago
         %td= user.customer_id
+        %td= user.active
