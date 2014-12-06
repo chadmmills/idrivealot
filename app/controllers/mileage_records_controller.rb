@@ -124,8 +124,7 @@ class MileageRecordsController < ApplicationController
 
     def ensure_active_user!
       unless current_user.active?
-        reset_session
-        redirect_to new_user_session_path, error: "Your account is locked due to invalid payment"
+        redirect_to update_payment_form_path, alert: "Your account is locked due to invalid payment"
       end
     end
 end

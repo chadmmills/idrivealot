@@ -11,7 +11,10 @@ RSpec.describe StripeEventHandler do
 
     StripeEventHandler.charge_failed_for_customer(@event.data.object.customer, @event)
 
+    @stripe_user.reload
+
     expect(ActionMailer::Base.deliveries.last.to.first).to eq @stripe_user.email
+    expect(@stripe_user).to_not be_active
   end
 
   it " locks the user on cancelled subscription" do
@@ -19,9 +22,9 @@ RSpec.describe StripeEventHandler do
     event = StripeMock.mock_webhook_event("customer.subscription.deleted", {
       customer: @stripe_user.customer_id
     })
-    StripeEventHandler.subscription_cancelled_for_customer(event.data.object.customer)
-    @stripe_user.reload
-    expect(@stripe_user.active?).to be_falsey
+    expect{
+      StripeEventHandler.subscription_cancelled_for_customer(event.data.object.customer)
+    }.to change(User, :count).by -1
   end
 
   def set_up_stripe_event

@@ -6,7 +6,7 @@ jQuery ->
 
 subscription =
   setupForm: ->
-    $('#new_user').submit ->
+    $('.cc_form').submit ->
       $('input[type=submit]').attr('disabled', true)
       if $('#card_number').length
         subscription.processCard()
@@ -25,7 +25,7 @@ subscription =
   handleStripeResponse: (status, response) ->
     if status == 200
       $('#user_stripe_card_token').val(response.id)
-      $('#new_user')[0].submit()
+      $('.cc_form')[0].submit()
     else
       $('#stripe_error').html("<div class='alert alert-alert stripe-alert'>" + response.error.message + "</div>")
       $('input[type=submit]').attr('disabled', false)

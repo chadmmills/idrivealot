@@ -25,4 +25,18 @@ class UsersController < Devise::RegistrationsController
     end
   end
 
+  def update_payment_show
+    @user = current_user
+  end
+
+  def update_payment
+    @user = User.find(params[:id])
+    @user.stripe_card_token = params[:user][:stripe_card_token]
+    if @user.update_payment
+      redirect_to mileage_records_path, notice: "Thank You!"
+    else
+      render :update_payment_show
+    end
+  end
+
 end

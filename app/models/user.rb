@@ -24,4 +24,16 @@ class User < ActiveRecord::Base
     false
   end
 
+  def update_payment
+    customer = Stripe::Customer.retrieve(customer_id)
+    customer.card = stripe_card_token
+    customer.save
+    self.active = true
+    save! if valid?
+  rescue Stripe::InvalidRequestError => e
+    logger.error "Stripe error while creating customer: #{e.message}"
+    errors.add :base, "There was a problem with your credit card."
+    false
+  end
+
 end

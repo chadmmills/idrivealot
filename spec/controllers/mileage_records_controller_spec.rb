@@ -4,11 +4,11 @@ describe MileageRecordsController do
 
   describe "Inactive User" do
     context "GET #index" do
-      it "logs out the inactive user" do
+      it "redirects the inactive user to credit card information screen" do
         user = create(:user, active: false)
         sign_in user
         get :index
-        expect(response).to redirect_to new_user_session_path
+        expect(response).to redirect_to update_payment_form_path
       end
     end
   end

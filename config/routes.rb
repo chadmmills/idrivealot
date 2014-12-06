@@ -10,6 +10,8 @@ MileageTracker::Application.routes.draw do
 		get 'login' => 'devise/sessions#new', :as => :new_user_session
 		post 'login' => 'devise/sessions#create', :as => :user_session
 		delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
+    post 'update-payment/:id' => 'users#update_payment', as: :update_payment
+    get 'update-payment' => 'users#update_payment_show', as: :update_payment_form
 	end
 
   namespace :admin do

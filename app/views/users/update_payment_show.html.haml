@@ -1,0 +1,18 @@
+
+.row
+  .small-12.columns
+    %h4 Please Update Your Payment Information
+    %p You must enter a valid credit card in order to access the app
+
+= form_for @user, url: update_payment_path(@user), method: :post, html: {class: "cc_form"} do |form|
+  = render 'devise/shared/stripe_card_form_fields', f: form
+  .row
+    .small-12.columns
+      = form.submit "Update Payment Information", class: "btn primary-button"
+
+.row
+  .small-12.columns
+    If you are having issues, please 
+    = link_to "Contact Us", "mailto:support@idrivealot.com"
+
+
