@@ -9,6 +9,6 @@ feature "User needs help" do
     click_button "Login"
 
     visit user_help_path
-    click_link "Contact Support"
+    expect(page).to have_content "Contact Support"
   end
 end
