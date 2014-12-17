@@ -39,4 +39,7 @@ class UsersController < Devise::RegistrationsController
     end
   end
 
+  def help
+  end
+
 end
