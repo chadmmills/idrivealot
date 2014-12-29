@@ -1,0 +1,6 @@
+
+= form_for @user, url: update_payment_path(@user), method: :post, html: {class: "cc_form"} do |form|
+  = render 'devise/shared/stripe_card_form_fields', f: form
+  .row
+    .small-12.columns
+      = form.submit "Update Payment Information", class: "btn primary-button"

@@ -57,7 +57,7 @@ feature "User" do
 		click_link "Edit Profile"
 		fill_in 'Email', with: 'newemail@example.com'
 		fill_in 'Current password', with: user.password
-		click_button "Update"
+		click_button "Update Account"
 		expect(page).to have_content "successfully"
 	end
 
