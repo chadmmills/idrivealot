@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.0'
 gem 'axlsx_rails'
 gem 'html2haml'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'

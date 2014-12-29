@@ -3,7 +3,7 @@ class StripeEventHandler
   def self.charge_failed_for_customer(customer, event)
     if failed_user = User.find_by(customer_id: customer)
       failed_user.update(active: false)
-      StripeEventMailer.failed_payment_notification(failed_user.id).deliver
+      StripeEventMailer.failed_payment_notification(failed_user.id).deliver_now
       Rails.logger.info "StripeEvent | Failed payment notification sent to #{failed_user.email}"
     else
       Rails.logger.error "StripeEvent | Error finding Customer #{customer} for charge failed event"

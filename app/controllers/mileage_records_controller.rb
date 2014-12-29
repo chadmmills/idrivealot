@@ -67,7 +67,7 @@ class MileageRecordsController < ApplicationController
                       .where("record_date <= ? AND record_date > ?", search_date.end_of_month, search_date-1)
 
     if email_flag
-      DataMailer.monthly_data(current_user.id, search_date_month, @download_data).deliver
+      DataMailer.monthly_data(current_user.id, search_date_month, @download_data).deliver_now
       flash[:notice] = "Email Sent!"
       redirect_to download_data_path and return
     else
