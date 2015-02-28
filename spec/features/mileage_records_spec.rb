@@ -55,6 +55,7 @@ feature "User" do
     
   end
 	scenario "can update their login information" do
+    stub_request(:get, /api.stripe.com/).to_return(:status => 200, :body => "true", :headers => {})
 		user = create(:user, email: 'update@exmaple.com')
 		signin user
 		click_link "Edit Profile"
