@@ -36,4 +36,12 @@ class User < ActiveRecord::Base
     false
   end
 
+  def is_a_stripe_user?
+    begin
+      Stripe::Customer.retrieve(customer_id)
+    rescue Stripe::StripeError => e
+      false
+    end
+  end
+
 end

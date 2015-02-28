@@ -51,6 +51,9 @@ feature "User" do
 		expect(page).to_not have_content mileage_record_1.created_at
 	end
 
+  describe "Stripe" do
+    
+  end
 	scenario "can update their login information" do
 		user = create(:user, email: 'update@exmaple.com')
 		signin user

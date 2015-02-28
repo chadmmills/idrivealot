@@ -125,3 +125,9 @@ $text-grey: #A8A69A;
 .features-ul li:before {
   content: "\2713\0020";
 }
+.phone_container {
+  text-align: center;
+  img {
+    max-height: 400px;
+  }
+}

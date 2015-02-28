@@ -22,8 +22,9 @@
         %br/
         = f.password_field :current_password
       %div= f.submit "Update Account", class: "btn primary-button"
-    %h2.tc Update Payment Information
-    = render 'devise/shared/update_payment_form'
+    - if resource.is_a_stripe_user?
+      %h2.tc Update Payment Information
+      = render 'devise/shared/update_payment_form'
     %h3 Cancel my account
     %p
       Unhappy? #{button_to "Cancel my account", registration_path(resource_name), class: "btn primary-button", :data => { :confirm => "Are you sure?" }, :method => :delete}
