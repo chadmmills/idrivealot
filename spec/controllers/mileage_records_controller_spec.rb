@@ -20,6 +20,15 @@ describe MileageRecordsController do
     end
   end
 
+  describe "GET list_view" do
+    login_user
+
+    it "returns success on get index" do
+      get :list_view
+      expect(response).to be_success
+    end
+  end
+
   describe "GET new" do
     login_user
     it "assigns a new mileage_record as @mileage_record" do
