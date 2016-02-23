@@ -105,7 +105,7 @@ class MileageRecordsController < ApplicationController
 
     def set_form_select_data
       @routes = MileageRecord.where(user: current_user).uniq.pluck(:route_description)
-			@dates = (1.month.ago.to_date..30.days.from_now).map{ |date| [date.strftime("%A, %b-%d"), date] }
+      @dates = (1.month.ago.to_date..30.days.from_now).map{ |date| [date.strftime("%A, %b-%d"), date] }
     end
 
     def mileage_record_params
@@ -127,13 +127,13 @@ class MileageRecordsController < ApplicationController
       end
     end
 
-		def mileage_records_or_next_path
-			if params[:redirect_path] == "Save & Add New"
-				new_mileage_record_path
-			else
+    def mileage_records_or_next_path
+      if params[:redirect_path] == "Save & Add New"
+        new_mileage_record_path
+      else
         mileage_records_path
-			end
-		end
+      end
+    end
 
     def ensure_active_user!
       unless current_user.active?
