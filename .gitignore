@@ -16,3 +16,7 @@
 /tmp
 config/database.yml
 config/secrets.yml
+
+mileage_records_dump.csv
+mileage_records_dump.numbers
+

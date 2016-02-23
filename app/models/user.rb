@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+    :recoverable, :rememberable, :trackable, :validatable
 
   has_many :mileage_records
 
@@ -11,11 +10,8 @@ class User < ActiveRecord::Base
   validates :customer_id, presence: true
 
   def save_with_payment
-    if email
-      customer = Stripe::Customer.create(description: email,
-                                         plan: "idrivealot_monthly",
-                                         card: stripe_card_token)
-      self.customer_id = customer.id
+    if email && customer
+      self[:customer_id] = customer.id
       save! if valid?
     end
   rescue Stripe::InvalidRequestError => e
@@ -25,11 +21,8 @@ class User < ActiveRecord::Base
   end
 
   def update_payment
-    customer = Stripe::Customer.retrieve(customer_id)
-    customer.card = stripe_card_token
-    customer.save
-    self.active = true
-    save! if valid?
+    update_stripe_card_with_new_token
+    update! active: true
   rescue Stripe::InvalidRequestError => e
     logger.error "Stripe error while creating customer: #{e.message}"
     errors.add :base, "There was a problem with your credit card."
@@ -38,10 +31,31 @@ class User < ActiveRecord::Base
 
   def is_a_stripe_user?
     begin
-      Stripe::Customer.retrieve(customer_id)
+      stripe_account.present?
     rescue Stripe::StripeError => e
       false
     end
   end
+
+  private
+
+    def customer
+      @_customer ||= Stripe::Customer.create(
+        description: email,
+        plan: "idrivealot_monthly",
+        card: stripe_card_token
+      )
+    end
+
+    def stripe_account
+      @_stripe_account ||= Stripe::Customer.retrieve(customer_id)
+    end
+
+    def update_stripe_card_with_new_token
+      if is_a_stripe_user?
+        stripe_account.card = stripe_card_token
+        stripe_account.save
+      end
+    end
 
 end
