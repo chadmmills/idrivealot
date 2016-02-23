@@ -9,6 +9,12 @@ class User < ActiveRecord::Base
 
   validates :customer_id, presence: true
 
+  def mileage_records_for_download(search_date:)
+    mileage_records.
+      order(:record_date).
+      where("record_date <= ? AND record_date > ?", search_date.end_of_month, search_date-1)
+  end
+
   def save_with_payment
     if email && customer
       self[:customer_id] = customer.id

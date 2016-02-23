@@ -8,8 +8,9 @@ class MileageRecord < ActiveRecord::Base
   #   t.integer :distance
   #   t.text :notes
   #   t.references :user, index: true
-
   #   t.timestamps
+
+  scope :by_date_and_end_mileage, -> { order("record_date DESC, end_mileage DESC") }
 
   belongs_to :user
 
